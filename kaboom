@@ -1,0 +1,32 @@
+#!/bin/bash
+# A script to generate a AOSC OS stage0 system.
+
+# Define environmental definitions.
+export _TOPDIR="$PWD"
+export _CONFDIR="$_TOPDIR"/etc
+export _LIBDIR="$_TOPDIR"/lib
+export _PROCDIR="$_TOPDIR"/proc
+export _STAGE0="$_TOPDIR"/stage0
+
+# Output formatters.
+abwarn() { echo -e "[\e[33mWARN\e[0m]: \e[1m$*\e[0m"; }
+aberr()  { echo -e "[\e[31mERROR\e[0m]: \e[1m$*\e[0m"; exit 1; }
+abinfo() { echo -e "[\e[96mINFO\e[0m]: \e[1m$*\e[0m"; }
+
+# Load configuration.
+for conf in "$_CONFDIR"/*.conf; do
+    abinfo "Loading configuration: $conf ..."
+    source $conf
+done
+
+# Load libraries.
+for bashlib in "$_LIBDIR"/*.bash; do
+    abinfo "Loading library: $bashlib ..."
+    source "$bashlib"
+done
+
+# Execute main loop.
+for proc in "$_PROCDIR"/*.bash; do
+    abinfo "Executing procedural loop: $proc ..."
+    source "$proc"
+done
