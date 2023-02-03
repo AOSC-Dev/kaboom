@@ -1,6 +1,6 @@
 # Define triple and build flags.
 # Build flags adapted from Autobuild3.
-case $ARCH in
+case $KABOOM_ARCH in
     alpha)
         _STAGE0_TARGET="alpha-aosc-linux-gnu"
         _FLAGS="-Os -mieee -mcpu=ev4"
