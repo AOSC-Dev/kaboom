@@ -11,7 +11,7 @@ echo "
 Setting up build environment for stage1
 ====
 "
-abinfo "Sourcing .kaboomrc ..."
+abinfo "Sourcing /.kaboomrc ..."
 source /.kaboomrc || \
     aberr "Failed to source /.kaboomrc: ?"
 
