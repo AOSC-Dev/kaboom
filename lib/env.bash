@@ -76,3 +76,6 @@ export MAKEFLAGS="-j$(( $(nproc) + 1))"
 
 # Executable paths.
 export PATH="$_STAGE0/tools/bin:$PATH"
+
+# We are building with root, fight us.
+export FORCE_UNSAFE_CONFIGURE=1
