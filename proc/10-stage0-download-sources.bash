@@ -13,12 +13,12 @@ source "$_DATADIR"/stage0-versions || \
     aberr "Failed to load version definitions: $?"
 
 abinfo "Preparing to download sources ..."
-if [ ! -d "$_STAGE0"/sources ]; then
-    mkdir -pv "$_STAGE0"/sources || \
+if [ ! -d "$_SRCDIR" ]; then
+    mkdir -pv "$_SRCDIR" || \
         aberr "Failed to create sources download directory: $?"
 fi
 
-cd "$_STAGE0"/sources
+cd "$_SRCDIR"
 
 # Download.
 abinfo "Downloading sources ..."
