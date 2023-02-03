@@ -1,5 +1,5 @@
 abinfo "binutils-pass1: Unpacking ..."
-tar xf "$_STAGE0_SRCDIR"/binutils-$BINUTILS_VER.tar.xz || \
+tar xf "$_SRCDIR"/binutils-$BINUTILS_VER.tar.xz || \
     aberr "Failed to unpack sources for binutils-pass1: $?"
 cd binutils-$BINUTILS_VER
 
@@ -12,7 +12,7 @@ abinfo "binutils-pass1: Running configure ..."
 ../configure \
     --prefix="$_STAGE0"/tools \
     --with-sysroot="$_STAGE0" \
-    --target="$_STAGE0_TARGET" \
+    --target="$_TARGET" \
     --disable-nls \
     --enable-gprofng=no \
     --disable-werror || \

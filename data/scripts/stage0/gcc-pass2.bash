@@ -1,12 +1,12 @@
-abinfo "gcc-pass1: Preparing sources ..."
+abinfo "gcc-pass2: Preparing sources ..."
 for i in \
     gcc-$GCC_VER.tar.xz \
     gmp-$GMP_VER.tar.xz \
     mpc-$MPC_VER.tar.gz \
     mpfr-$MPFR_VER.tar.xz; do
-    abinfo "gcc-pass1: Unpacking source package $i ..."
-    tar xf "$_STAGE0_SRCDIR"/$i || \
-        aberr "Failed to unpack $i for gcc-pass1 ..."
+    abinfo "gcc-pass2: Unpacking source package $i ..."
+    tar xf "$_SRCDIR"/$i || \
+        aberr "Failed to unpack $i for gcc-pass2 ..."
 done
 
 cd gcc-$GCC_VER
@@ -17,8 +17,8 @@ mv -v ../mpc-$MPC_VER mpc || \
 mv -v ../mpfr-$MPFR_VER mpfr || \
     aberr "Failed to install source for mpfr-$MPFR_VER ..."
 
-abinfo "gcc-pass1: Tweaking build configurations ..."
-case $ARCH in
+abinfo "gcc-pass2: Tweaking build configurations ..."
+case $KABOOM_ARCH in
     alpha)
         sed -e '/m64=/s/lib64/lib/' \
             -i gcc/config/alpha/t-linux64
@@ -61,31 +61,42 @@ case $ARCH in
         ;;
 esac
 
-abinfo "gcc-pass1: Creating build directory ..."
-mkdir -pv build
+abinfo "gcc-pass2: Tweaking libstdc++ build rules to enable POSIX threading support ..."
+# From Linux From Scratch:
+#
+# Override the building rule of libgcc and libstdc++ headers, to allow
+# building these libraries with POSIX threads support.
+sed -e '/thread_header =/s/@.*@/gthr-posix.h/' \
+    -i libgcc/Makefile.in \
+    -i libstdc++-v3/include/Makefile.in || \
+    aberr "Failed to tweak libstdc++ build rules for gcc-pass2: $?"
+
+abinfo "gcc-pass2: Creating build directory ..."
+mkdir -pv build || \
+    aberr "Failed to create build directory for gcc-pass2: $?"
 cd build
 
-abinfo "gcc-pass1: Running configure ..."
-AUTOTOOLS_AFTER="--target=$_STAGE0_TARGET \
-                 --prefix=$_STAGE0/tools \
+abinfo "gcc-pass2: Running configure ..."
+AUTOTOOLS_AFTER="--build=$_TARGET \
+                 --host=$_TARGET \
+                 --target=$_TARGET \
+                 --prefix=/usr \
+                 --with-build-sysroot=$_STAGE0 \
                  --with-glibc-version=$GLIBC_VER \
-                 --with-sysroot=$_STAGE0 \
-                 --with-newlib \
-                 --without-headers \
+                 --with-zstd=no \
                  --enable-default-pie \
                  --enable-default-ssp \
                  --disable-nls \
-                 --disable-shared \
                  --disable-multilib \
-                 --disable-threads \
                  --disable-libatomic \
                  --disable-libgomp \
                  --disable-libquadmath \
                  --disable-libssp \
                  --disable-libvtv \
-                 --disable-libstdcxx \
-                 --enable-languages=c,c++"
-case $ARCH in
+                 --enable-languages=c,c++ \
+                 LDFLAGS_FOR_TARGET=-L$PWD/$_TARGET/libgcc"
+
+case $KABOOM_ARCH in
     alpha)
         AUTOTOOLS_AFTER=" \
                  ${AUTOTOOLS_AFTER} \
@@ -196,30 +207,18 @@ esac
 
 ../configure \
     ${AUTOTOOLS_AFTER} || \
-    aberr "Failed to configure gcc-pass1: $?"
+    aberr "Failed to configure gcc-pass2: $?"
 
-abinfo "gcc-pass1: Building ..."
+abinfo "gcc-pass2: Building ..."
 make || \
-    aberr "Failed to build gcc-pass1: $?"
+    aberr "Failed to build gcc-pass2: $?"
 
-abinfo "gcc-pass1: Installing ..."
-make install || \
-    aberr "Failed to install gcc-pass1: $?"
+abinfo "gcc-pass2: Installing ..."
+make install \
+    DESTDIR="$_STAGE0" || \
+    aberr "Failed to install gcc-pass2: $?"
 
-abinfo "gcc-pass1: Generating limits.h ..."
-# From Linux From Scratch:
-#
-# This build of GCC has installed a couple of internal system headers.
-# Normally one of them, limits.h, would in turn include the corresponding
-# system limits.h header, in this case, $LFS/usr/include/limits.h. However,
-# at the time of this build of GCC $LFS/usr/include/limits.h does not exist,
-# so the internal header that has just been installed is a partial,
-# self-contained file and does not include the extended features of the system
-# header. This is adequate for building Glibc, but the full internal header
-# will be needed later. Create a full version of the internal header using a
-# command that is identical to what the GCC build system does in normal
-# circumstances.
-cd ..
-cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
-    `dirname $($_STAGE0_TARGET-gcc -print-libgcc-file-name)`/install-tools/include/limits.h || \
-    aberr "Failed to generate limits.h for gcc-pass1: $?"
+abinfo "gcc-pass2: Creating a symlink for /usr/bin/cc => gcc ..."
+ln -sv gcc \
+    "$_STAGE0"/usr/bin/cc || \
+    aberr "Failed to create the symlink for /usr/bin/cc => gcc gcc-pass2: $?"
