@@ -1,0 +1,16 @@
+alpha
+amd64
+arm64
+armv4
+armv6hf
+armv7hf
+i486
+loongarch64
+loongson2f
+loongson3
+mips64r6el
+m68k
+powerpc
+ppc64
+ppc64el
+riscv64

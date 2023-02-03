@@ -24,6 +24,11 @@ if [ -z "${KABOOM_ARCH}" ]; then
     aberr '$KABOOM_ARCH is not set, please check your settings in etc/kaboom.conf!'
 fi
 
+# Check if KABOOM_ARCH is valid.
+if ! grep -qFx "$KABOOM_ARCH" data/supported-arch; then
+    aberr 'The $KABOOM_ARCH specified is not yet supported by Kaboom. Please consider adapting Kaboom to this architecture.'
+fi
+
 # Load libraries.
 for bashlib in "$_LIBDIR"/*.bash; do
     abinfo "Loading library: $bashlib ..."
