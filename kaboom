@@ -19,6 +19,11 @@ for conf in "$_CONFDIR"/*.conf; do
     source $conf
 done
 
+# Test if essential variables are set.
+if [ -z "${KABOOM_ARCH}" ]; then
+    aberr '$KABOOM_ARCH is not set, please check your settings in etc/kaboom.conf!'
+fi
+
 # Load libraries.
 for bashlib in "$_LIBDIR"/*.bash; do
     abinfo "Loading library: $bashlib ..."
