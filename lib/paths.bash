@@ -8,4 +8,4 @@ export _PROCDIR="$_TOPDIR"/proc
 export _SRCDIR="$_TOPDIR"/sources
 
 export _STAGE0="$_TOPDIR"/stage0
-export _STAGE0_SRCDIR="$_STAGE0"/sources
+export _STAGE1="$_TOPDIR"/stage1
