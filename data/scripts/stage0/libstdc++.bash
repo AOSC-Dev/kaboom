@@ -139,5 +139,5 @@ make install \
     aberr "Failed to install libstdc++: $?"
 
 abinfo "libstdc++: Removing unwanted libtool archives (.la) ..."
-rm -v "$_STAGE0"/usr/lib/lib{stdc++,stdc++fs,supc++}.la || \
+rm -v "$_STAGE0"/usr/lib*/lib{stdc++,stdc++fs,supc++}.la || \
     aberr "Failed to remove unwanted libtool archives (.la) from libstdc++: $?"
