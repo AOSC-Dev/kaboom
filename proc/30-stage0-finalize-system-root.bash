@@ -175,11 +175,3 @@ chmod -v 600 /var/log/btmp || \
 abinfo "Setting up resolv.conf ..."
 cp -v /etc/resolv.conf \
     "$_STAGE0"/etc/resolv.conf
-
-abinfo "Installing environment file ..."
-cp -v "$_LIBDIR"/env.bash \
-    "$_STAGE0"/.kaboomrc || \
-    aberr "Failed to copy environment file: $?"
-sed -e '/^export PATH/d' \
-    -i "$_STAGE0"/.kaboomrc || \
-    aberr "Failed to tweak environment file: $?"

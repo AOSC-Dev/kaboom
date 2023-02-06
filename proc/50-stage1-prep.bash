@@ -37,7 +37,8 @@ cp -rv "$_SRCDIR" \
     aberr "Failed to copy sources for stage1: $?"
 
 # Environment settings.
-echo -e "
+abinfo "Setting up environment for stage1: $?"
+echo -e "\
 # Contributed data directory.
 export _CONTRIBDIR=/stage1-contrib
 
@@ -47,9 +48,16 @@ export _DATADIR=/stage1-data
 # Source cache directory.
 export _SRCDIR=/stage1-sources
 
-# Extra PATHs.
-export PATH=\"\$HOME/.local/bin:/usr/bin/core_perl:\$PATH\"
-
 # Architecture.
-export KABOOM_ARCH=$KABOOM_ARCH" \
-    >> "$_STAGE1"/.kaboomrc
+export KABOOM_ARCH=$KABOOM_ARCH
+" \
+    > "$_STAGE1"/.kaboomrc || \
+    aberr "Failed to generate environment file (source paths, KABOOM_ARCH): $?"
+cat "$_LIBDIR"/env.bash \
+    >> "$_STAGE1"/.kaboomrc || \
+    aberr "Failed to generate environment file (lib/env.bash): $?"
+echo -e "
+# Extra PATHs.
+export PATH=\"\$HOME/.local/bin:/usr/bin/core_perl:\$PATH\"" \
+    >> "$_STAGE1"/.kaboomrc || \
+    aberr "Failed to generate environment file (PATH variable): $?"
