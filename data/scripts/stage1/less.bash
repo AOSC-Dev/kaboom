@@ -1,5 +1,5 @@
 abinfo "less: Unpacking ..."
-tar xf "$_SRCDIR"/less-$LESS_VER.tar.xz || \
+tar xf "$_SRCDIR"/less-$LESS_VER.tar.gz || \
     aberr "Failed to unpack less: $?"
 
 cd less-$LESS_VER
