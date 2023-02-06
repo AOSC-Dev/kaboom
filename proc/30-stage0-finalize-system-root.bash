@@ -51,7 +51,7 @@ rm -frv \
     "$_STAGE0"/{,s}bin \
     "$_STAGE0"/usr/sbin \
     "$_STAGE0"/lib{,64} \
-    "$_STAGE0"/usr/lib64} || \
+    "$_STAGE0"/usr/lib64 || \
     aberr "Failed to remove extraneous directories: $?"
 
 abinfo "Creating system directories ..."
