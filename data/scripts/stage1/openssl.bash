@@ -37,7 +37,7 @@ abinfo "openssl: Running Configure ..."
     --prefix=/usr \
     --openssldir=/etc/ssl \
     --libdir=lib \
-    shared zlib $KABOOM_ARCH_OPTS || \
+    shared zlib $ARCH_OPTS || \
     aberr "Failed to run Configure for openssl: $?"
 
 abinfo "openssl: Building ..."
