@@ -17,50 +17,6 @@ mv -v ../mpc-$MPC_VER mpc || \
 mv -v ../mpfr-$MPFR_VER mpfr || \
     aberr "Failed to install source for mpfr-$MPFR_VER ..."
 
-abinfo "gcc-pass2: Tweaking build configurations ..."
-case $KABOOM_ARCH in
-    alpha)
-        sed -e '/m64=/s/lib64/lib/' \
-            -i gcc/config/alpha/t-linux64
-        ;;
-    amd64)
-        sed -e '/m64=/s/lib64/lib/' \
-            -i gcc/config/i386/t-linux64
-        ;;
-    arm64)
-        sed -e '/m64=/s/lib64/lib/' \
-            -i gcc/config/arm/t-linux64
-        ;;
-    loongarch64)
-        sed -e '/m64=/s/lib64/lib/' \
-            -i gcc/config/loongarch/t-linux64
-        ;;
-    loongson2f)
-        sed -e '/m64=/s/lib64/lib/' \
-            -i gcc/config/mips/t-linux64
-        ;;
-    loongson3)
-        sed -e '/m64=/s/lib64/lib/' \
-            -i gcc/config/mips/t-linux64
-        ;;
-    mips64r6el)
-        sed -e '/m64=/s/lib64/lib/' \
-            -i gcc/config/mips/t-linux64
-        ;;
-    ppc64)
-        sed -e '/m64=/s/lib64/lib/' \
-            -i gcc/config/rs6000/t-linux64
-        ;;
-    ppc64el)
-        sed -e '/m64=/s/lib64/lib/' \
-            -i gcc/config/rs6000/t-linux64
-        ;;
-    riscv64)
-        sed -e '/m64=/s/lib64/lib/' \
-            -i gcc/config/riscv/t-linux64
-        ;;
-esac
-
 abinfo "gcc-pass2: Tweaking libstdc++ build rules to enable POSIX threading support ..."
 # From Linux From Scratch:
 #
@@ -93,6 +49,8 @@ AUTOTOOLS_AFTER="--build=$_TARGET \
                  --disable-libquadmath \
                  --disable-libssp \
                  --disable-libvtv \
+                 --enable-libstdcxx \
+                 --enable-bootstrap \
                  --enable-languages=c,c++ \
                  LDFLAGS_FOR_TARGET=-L$PWD/$_TARGET/libgcc"
 

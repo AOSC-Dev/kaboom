@@ -17,50 +17,6 @@ mv -v ../mpc-$MPC_VER mpc || \
 mv -v ../mpfr-$MPFR_VER mpfr || \
     aberr "Failed to install source for mpfr-$MPFR_VER ..."
 
-abinfo "gcc-pass1: Tweaking build configurations ..."
-case $KABOOM_ARCH in
-    alpha)
-        sed -e '/m64=/s/lib64/lib/' \
-            -i gcc/config/alpha/t-linux64
-        ;;
-    amd64)
-        sed -e '/m64=/s/lib64/lib/' \
-            -i gcc/config/i386/t-linux64
-        ;;
-    arm64)
-        sed -e '/m64=/s/lib64/lib/' \
-            -i gcc/config/arm/t-linux64
-        ;;
-    loongarch64)
-        sed -e '/m64=/s/lib64/lib/' \
-            -i gcc/config/loongarch/t-linux64
-        ;;
-    loongson2f)
-        sed -e '/m64=/s/lib64/lib/' \
-            -i gcc/config/mips/t-linux64
-        ;;
-    loongson3)
-        sed -e '/m64=/s/lib64/lib/' \
-            -i gcc/config/mips/t-linux64
-        ;;
-    mips64r6el)
-        sed -e '/m64=/s/lib64/lib/' \
-            -i gcc/config/mips/t-linux64
-        ;;
-    ppc64)
-        sed -e '/m64=/s/lib64/lib/' \
-            -i gcc/config/rs6000/t-linux64
-        ;;
-    ppc64el)
-        sed -e '/m64=/s/lib64/lib/' \
-            -i gcc/config/rs6000/t-linux64
-        ;;
-    riscv64)
-        sed -e '/m64=/s/lib64/lib/' \
-            -i gcc/config/riscv/t-linux64
-        ;;
-esac
-
 abinfo "gcc-pass1: Creating build directory ..."
 mkdir -pv build || \
     aberr "Failed to create build directory for gcc-pass1: $?"
