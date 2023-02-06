@@ -7,14 +7,6 @@ mkdir -pv glibc-$GLIBC_VER/build || \
     aberr "Failed to create build directory for glibc: $?"
 cd glibc-$GLIBC_VER/build
 
-if [[ "$KABOOM_ARCH" = "ppc64el" ]]; then
-    abinfo "Storing default flags ..."
-    export _CFLAGS="${CFLAGS}"
-
-    abinfo "Dropping conflicting -mvsx flag ..."
-    export CFLAGS="${CFLAGS/-mpower8-vector/}"
-fi
-
 abinfo "glibc: Running configure ..."
 # Note: Set minimum kernel version to lowest branch used by mainline
 # architectures.
@@ -64,8 +56,3 @@ sed -e '/RTLDLIST=/s@/usr@@g' \
 abinfo "glibc: Generating and installing locale data ..."
 make localedata/install-locales || \
     aberr "Failed to generate and install locale data: $?"
-
-if [[ "$KABOOM_ARCH" = "ppc64el" ]]; then
-    abinfo "Resetting default flags ..."
-    export CFLAGS="${_CFLAGS}"
-fi
