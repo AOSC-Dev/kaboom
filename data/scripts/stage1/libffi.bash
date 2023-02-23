@@ -7,7 +7,6 @@ cd libffi-$LIBFFI_VER
 abinfo "libffi: Running configure ..."
 ./configure \
     --prefix=/usr \
-    --host=$_TARGET \
     --build=$_TARGET || \
     aberr "Failed to run configure for libffi: $?"
 
