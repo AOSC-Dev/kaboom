@@ -7,7 +7,6 @@ cd texinfo-$TEXINFO_VER
 abinfo "texinfo: Running configure ..."
 ./configure \
     --prefix=/usr \
-    --host=$_TARGET \
     --build=$_TARGET || \
     aberr "Failed to run configure for texinfo: $?"
 
