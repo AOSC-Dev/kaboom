@@ -16,7 +16,6 @@ fi
 abinfo "gettext: Running configure ..."
 ./configure \
     --prefix=/usr \
-    --host=$_TARGET \
     --build=$_TARGET \
     --disable-shared || \
     aberr "Failed to run configure for gettext: $?"
