@@ -59,7 +59,7 @@ case $KABOOM_ARCH in
         ;;
     ppc64el)
         _TARGET="powerpc64le-aosc-linux-gnu"
-        _FLAGS="-O2 -mcpu=power8 -mtune=power9 -mabi=altivec -msecure-plt -mvsx -mabi=ieeelongdouble"
+        _FLAGS="-O2 -mcpu=power8 -mtune=power9 -msecure-plt -mvsx -mabi=ieeelongdouble"
         ;;
     riscv64)
         _TARGET="riscv64-aosc-linux-gnu"
