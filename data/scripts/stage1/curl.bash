@@ -7,7 +7,6 @@ cd curl-$CURL_VER
 abinfo "curl: Running configure ..."
 ./configure \
     --prefix=/usr \
-    --host=$_TARGET \
     --build=$_TARGET \
     --with-openssl || \
     aberr "Failed to run configure for curl: $?"
