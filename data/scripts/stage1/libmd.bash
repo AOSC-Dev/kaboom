@@ -7,7 +7,6 @@ cd libmd-$LIBMD_VER
 abinfo "libmd: Running configure ..."
 ./configure \
     --prefix=/usr \
-    --host=$_TARGET \
     --build=$_TARGET || \
     aberr "Failed to run configure for libmd: $?"
 
