@@ -7,7 +7,6 @@ cd wget-$WGET_VER
 abinfo "wget: Running configure ..."
 ./configure \
     --prefix=/usr \
-    --host=$_TARGET \
     --build=$_TARGET \
     --with-ssl=openssl || \
     aberr "Failed to run configure for wget: $?"
