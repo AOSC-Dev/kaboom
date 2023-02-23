@@ -7,7 +7,6 @@ cd bison-$BISON_VER
 abinfo "bison: Running configure ..."
 ./configure \
     --prefix=/usr \
-    --host=$_TARGET \
     --build=$_TARGET || \
     aberr "Failed to run configure for bison: $?"
 
