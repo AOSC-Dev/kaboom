@@ -7,7 +7,6 @@ cd automake-$AUTOMAKE_VER
 abinfo "automake: Running configure ..."
 ./configure \
     --prefix=/usr \
-    --host=$_TARGET \
     --build=$_TARGET || \
     aberr "Failed to run configure for automake: $?"
 
