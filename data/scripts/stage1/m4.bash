@@ -7,7 +7,6 @@ cd m4-$M4_VER
 abinfo "m4: Running configure ..."
 ./configure \
     --prefix=/usr \
-    --host=$_TARGET \
     --build=$_TARGET || \
     aberr "Failed to run configure for m4: $?"
 
