@@ -7,7 +7,6 @@ cd autoconf-$AUTOCONF_VER
 abinfo "autoconf: Running configure ..."
 ./configure \
     --prefix=/usr \
-    --host=$_TARGET \
     --build=$_TARGET || \
     aberr "Failed to run configure for autoconf: $?"
 
