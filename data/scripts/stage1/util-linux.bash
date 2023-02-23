@@ -6,7 +6,6 @@ cd util-linux-$UTIL_LINUX_VER
 
 abinfo "util-linux: Running configure ..."
 ./configure \
-    --host=$_TARGET \
     --build=$_TARGET \
     --libdir=/usr/lib    \
     --disable-chfn-chsh  \
