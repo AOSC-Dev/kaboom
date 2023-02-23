@@ -12,7 +12,6 @@ abinfo "glibc: Running configure ..."
 # architectures.
 ../configure \
     --prefix=/usr \
-    --host=$_TARGET \
     --build=$_TARGET \
     --enable-kernel=5.4 \
     --with-headers=/usr/include \
