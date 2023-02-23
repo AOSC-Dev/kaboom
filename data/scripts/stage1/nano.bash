@@ -7,7 +7,6 @@ cd nano-$NANO_VER
 abinfo "nano: Running configure ..."
 ./configure \
     --prefix=/usr \
-    --host=$_TARGET \
     --build=$_TARGET || \
     aberr "Failed to run configure for nano: $?"
 
