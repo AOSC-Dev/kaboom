@@ -7,7 +7,6 @@ cd Python-$PYTHON3_VER
 abinfo "python-3: Running configure ..."
 ./configure \
     --prefix=/usr \
-    --host=$_TARGET \
     --build=$_TARGET \
     --enable-shared \
     --with-ensurepip || \
