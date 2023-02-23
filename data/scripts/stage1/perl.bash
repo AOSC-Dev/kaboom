@@ -1,3 +1,12 @@
+if [[ "${KABOOM_ARCH}" = "ppc64el" ]]; then
+    # FIXME: -O2 generates broken code, SIGILLs during module compilation.
+    abinfo "ppc64el: Storing standard flags into _CFLAGS ..."
+    export _CFLAGS="${CFLAGS}"
+
+    abinfo "ppc64el: Downgrading -O2 to -O1 ..."
+    export CFLAGS="${CFLAGS/-O2/-O1}"
+fi
+
 abinfo "perl: Unpacking ..."
 tar xf "$_SRCDIR"/perl-$PERL_VER.tar.xz || \
     aberr "Failed to unpack perl: $?"
@@ -34,3 +43,11 @@ make || \
 abinfo "perl: Installing ..."
 make install || \
     aberr "Failed to install perl: $?"
+
+if [[ "${KABOOM_ARCH}" = "ppc64el" ]]; then
+    abinfo "ppc64el: Restoring CFLAGS ..."
+    export CFLAGS="${_CFLAGS}"
+
+    abinfo "ppc64el: Unsetting _CFLAGS ..."
+    unset _CFLAGS
+fi
