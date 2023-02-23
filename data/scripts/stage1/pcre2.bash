@@ -7,7 +7,6 @@ cd pcre2-$PCRE2_VER
 abinfo "pcre2: Running configure ..."
 ./configure \
     --prefix=/usr \
-    --host=$_TARGET \
     --build=$_TARGET || \
     aberr "Failed to run configure for pcre2: $?"
 
