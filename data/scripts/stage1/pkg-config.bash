@@ -7,7 +7,6 @@ cd pkg-config-$PKG_CONFIG_VER
 abinfo "pkg-config: Running configure ..."
 ./configure \
     --prefix=/usr \
-    --host=$_TARGET \
     --build=$_TARGET \
     --with-internal-glib \
     --disable-host-tool || \
