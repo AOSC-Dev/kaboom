@@ -7,7 +7,6 @@ cd less-$LESS_VER
 abinfo "less: Running configure ..."
 ./configure \
     --prefix=/usr \
-    --host=$_TARGET \
     --build=$_TARGET || \
     aberr "Failed to run configure for less: $?"
 
