@@ -7,7 +7,6 @@ cd expat-$EXPAT_VER
 abinfo "expat: Running configure ..."
 ./configure \
     --prefix=/usr \
-    --host=$_TARGET \
     --build=$_TARGET || \
     aberr "Failed to run configure for expat: $?"
 
