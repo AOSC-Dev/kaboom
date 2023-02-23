@@ -7,7 +7,6 @@ cd libarchive-$LIBARCHIVE_VER
 abinfo "libarchive: Running configure ..."
 ./configure \
     --prefix=/usr \
-    --host=$_TARGET \
     --build=$_TARGET || \
     aberr "Failed to run configure for libarchive: $?"
 
