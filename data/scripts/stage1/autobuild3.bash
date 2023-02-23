@@ -25,12 +25,14 @@ ln -sv ../usr/lib/autobuild3/etc/autobuild \
     aberr "Failed to create the symlink for /etc/autobuild: $?"
 
 abinfo "autobuild3: Installing executable symlinks ..."
+cd /usr/bin
 ln -sv ../lib/autobuild3/ab3.sh \
-    /usr/bin/autobuild || \
+    . || \
     aberr "Failed to create symlink for /usr/bin/autobuild: $?"
-ln -sv ../lib/autobuild3/contrib/* \
-    /usr/bin/ || \
+ln -sv ../lib/autobuild3/contrib/autobuild-* \
+    . || \
     aberr "Failed to create symlinks for contrib scripts: $?"
+cd /
 
 abinfo "autobuild3: Creating fake symlinks for apt ..."
 for fake in apt apt-get apt-cache; do
