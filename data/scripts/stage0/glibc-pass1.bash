@@ -43,5 +43,5 @@ sed -e '/RTLDLIST=/s@/usr@@g' \
     aberr "Failed to adjust ldd: $?"
 
 abinfo "glibc-pass1: Finalising limits.h installation (gcc-pass1) ..."
-"$_STAGE0"/tools/libexec/gcc/$_TARGET/12.2.0/install-tools/mkheaders || \
+"$_STAGE0"/tools/libexec/gcc/$_TARGET/${GCC_VER%%+*}/install-tools/mkheaders || \
     aberr "Failed to finalise limits.h installation (gcc-pass1) ..."
