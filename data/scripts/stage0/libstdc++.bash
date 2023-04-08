@@ -20,7 +20,7 @@ AUTOTOOLS_AFTER="--host=$_TARGET \
                  --disable-multilib \
                  --disable-nls \
                  --disable-libstdcxx-pch \
-                 --with-gxx-include-dir=/tools/$_TARGET/include/c++/$GCC_VER"
+                 --with-gxx-include-dir=/tools/$_TARGET/include/c++/${GCC_VER%%+*}"
 
 case $KABOOM_ARCH in
     alpha)
