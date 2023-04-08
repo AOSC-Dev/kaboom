@@ -2,6 +2,12 @@ abinfo "libstdc++: Unpacking ..."
 tar xf "$_SRCDIR"/gcc-$GCC_VER.tar.xz || \
     aberr "Failed to unpack libstdc++: $?"
 
+abinfo "Replacing config.* ..."
+for i in $(find -name config.guess -o -name config.sub); do
+    cp -v "$_CONTRIBDIR"/automake/$(basename "$i") "$i" || \
+        aberr "Failed to copy replacement $i: $?."
+done
+
 abinfo "libstdc++: Creating build directory ..."
 mkdir -pv gcc/build || \
     aberr "Failed to create build directory for libstdc++: $?"

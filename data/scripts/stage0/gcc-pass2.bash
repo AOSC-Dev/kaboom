@@ -17,6 +17,12 @@ mv -v ../mpc-$MPC_VER mpc || \
 mv -v ../mpfr-$MPFR_VER mpfr || \
     aberr "Failed to install source for mpfr-$MPFR_VER ..."
 
+abinfo "Replacing config.* ..."
+for i in $(find -name config.guess -o -name config.sub); do
+    cp -v "$_CONTRIBDIR"/automake/$(basename "$i") "$i" || \
+        aberr "Failed to copy replacement $i: $?."
+done
+
 abinfo "gcc-pass2: Tweaking libstdc++ build rules to enable POSIX threading support ..."
 # From Linux From Scratch:
 #
