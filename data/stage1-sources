@@ -5,11 +5,11 @@ https://ftp.gnu.org/gnu/automake/automake-$AUTOMAKE_VER.tar.xz
 https://sourceware.org/pub/binutils/releases/binutils-$BINUTILS_VER.tar.xz
 https://ftp.gnu.org/gnu/bison/bison-$BISON_VER.tar.xz
 https://sourceware.org/pub/bzip2/bzip2-$BZIP2_VER.tar.gz
-https://hg.mozilla.org/releases/mozilla-release/raw-file/$CA_CERTS_VER/security/nss/lib/ckfw/builtins/certdata.txt
+https://github.com/nss-dev/nss/raw/$CA_CERTS_VER/lib/ckfw/builtins/certdata.txt
 https://curl.se/download/curl-$CURL_VER.tar.xz
 http://ftp.debian.org/debian/pool/main/d/dpkg/dpkg_$DPKG_VER.tar.xz
 https://github.com/libexpat/libexpat/releases/download/R_${EXPAT_VER//./_}/expat-$EXPAT_VER.tar.xz
-https://ftp.gnu.org/gnu/gcc/gcc-$GCC_VER/gcc-$GCC_VER.tar.xz
+https://repo.aosc.io/aosc-repacks/gcc-$GCC_VER.tar.xz
 https://ftp.gnu.org/gnu/gettext/gettext-$GETTEXT_VER.tar.xz
 https://github.com/git/git/archive/refs/tags/v$GIT_VER.tar.gz
 https://ftp.gnu.org/gnu/glibc/glibc-$GLIBC_VER.tar.xz
@@ -23,7 +23,7 @@ https://ftp.gnu.org/gnu/mpc/mpc-$MPC_VER.tar.gz
 https://ftp.gnu.org/gnu/mpfr/mpfr-$MPFR_VER.tar.xz
 https://ftp.gnu.org/gnu/nano/nano-$NANO_VER.tar.xz
 https://www.openssl.org/source/openssl-$OPENSSL_VER.tar.gz
-https://sourceforge.net/projects/pcre/files/pcre2/$PCRE2_VER/pcre2-$PCRE2_VER.tar.gz
+https://github.com/PCRE2Project/pcre2/releases/download/pcre2-$PCRE2_VER/pcre2-$PCRE2_VER.tar.gz
 https://www.cpan.org/src/${PERL_VER%%.*}.0/perl-$PERL_VER.tar.xz
 https://pkg-config.freedesktop.org/releases/pkg-config-$PKG_CONFIG_VER.tar.gz
 https://www.python.org/ftp/python/$PYTHON3_VER/Python-$PYTHON3_VER.tar.xz
