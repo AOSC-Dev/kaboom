@@ -31,7 +31,7 @@ case $KABOOM_ARCH in
         ;;
     loongarch64)
         _TARGET="loongarch64-aosc-linux-gnu"
-        _FLAGS="-O2 -mabi=lp64d -march=loongarch64 -mtune=loongarch64"
+        _FLAGS="-O2 -mabi=lp64d -march=la464 -mtune=la464"
         ;;
     loongson2f)
         _TARGET="mips64el-aosc-linux-gnuabi64"
