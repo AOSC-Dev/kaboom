@@ -94,7 +94,7 @@ case $KABOOM_ARCH in
     loongarch64)
         AUTOTOOLS_AFTER=" \
                  ${AUTOTOOLS_AFTER} \
-                 --with-arch=loongarch64 \
+                 --with-arch=la464 \
                  --with-abi=lp64d"
         ;;
     loongson2f)
