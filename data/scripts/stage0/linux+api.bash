@@ -1,5 +1,5 @@
 abinfo "linux+api: Unpacking ..."
-tar xf "$_SRCDIR"/linux-$LINUX_API_VER.tar.xz || \
+tar xf "$_SRCDIR"/linux-$LINUX_API_VER.tar.gz || \
     aberr "Failed to unpack sources for linux+api: $?"
 cd linux-$LINUX_API_VER
 
