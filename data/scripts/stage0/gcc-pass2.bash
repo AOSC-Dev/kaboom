@@ -9,7 +9,7 @@ for i in \
         aberr "Failed to unpack $i for gcc-pass2 ..."
 done
 
-cd gcc-$GCC_VER
+cd gcc
 mv -v ../gmp-$GMP_VER gmp || \
     aberr "Failed to install source for gmp-$GMP_VER ..."
 mv -v ../mpc-$MPC_VER mpc || \

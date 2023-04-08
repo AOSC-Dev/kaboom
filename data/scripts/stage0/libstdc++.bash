@@ -3,9 +3,9 @@ tar xf "$_SRCDIR"/gcc-$GCC_VER.tar.xz || \
     aberr "Failed to unpack libstdc++: $?"
 
 abinfo "libstdc++: Creating build directory ..."
-mkdir -pv gcc-$GCC_VER/build || \
+mkdir -pv gcc/build || \
     aberr "Failed to create build directory for libstdc++: $?"
-cd gcc-$GCC_VER/build
+cd gcc/build
 
 abinfo "libstdc++: Running configure ..."
 AUTOTOOLS_AFTER="--host=$_TARGET \
