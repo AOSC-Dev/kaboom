@@ -13,6 +13,12 @@ if [ -e "$_CONTRIBDIR"/dpkg-patches/*.patch.$KABOOM_ARCH ]; then
     done
 fi
 
+if [[ "$KABOOM_ARCH" = "loongarch64" ]]; then
+    abinfo "dpkg: Renaming loong64 => loongarch64 ..."
+    sed -e 's|loong64|loongarch64|g' \
+        -i data/cputable
+fi
+
 abinfo "dpkg: Running configure ..."
 # FIXME: When --build= is specified, dpkg could not recognise our arch hack.
 if [[ "$KABOOM_ARCH" != "loongson2f" && \
