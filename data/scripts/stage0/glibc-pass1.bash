@@ -21,7 +21,7 @@ abinfo "glibc-pass1: Running configure ..."
     --host=$_TARGET \
     --build=$_TARGET \
     --enable-kernel=5.4 \
-    --with-headers=$_STAGE0/usr/include \
+    --with-headers="$_STAGE0"/usr/include \
     libc_cv_slibdir=/usr/lib || \
     aberr "Failed to run configure for glibc-pass1: $?"
 
