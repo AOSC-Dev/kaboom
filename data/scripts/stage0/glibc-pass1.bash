@@ -56,3 +56,21 @@ if [[ "$KABOOM_ARCH" = "ppc64el" ]]; then
     abinfo "Resetting default flags ..."
     export CFLAGS="${_CFLAGS}"
 fi
+
+if [[ "$KABOOM_ARCH" = *64* || \
+      "$KABOOM_ARCH" = "alpha" || \
+      "$KABOOM_ARCH" = loongson* ]]; then
+    if [ -d "$_STAGE0"/usr/lib64 ]; then
+        abinfo "Moving /usr/lib64/* => /usr/lib ..."
+        mv -v "$_STAGE0"/usr/lib64/* \
+            "$_STAGE0"/usr/lib/ || \
+            aberr "Failed to move /usr/lib64/* => /usr/lib: $?"
+
+        abinfo "Removing /usr/lib64 ..."
+        rm -rv "$_STAGE0"/usr/lib64 || \
+            aberr "Failed to remove /usr/lib64: $?"
+    fi
+    abinfo "Creating a symlink /usr/lib64 => /usr/lib ..."
+    ln -sv lib "$_STAGE0"/usr/lib64 || \
+        aberr "Failed to create a symlink /usr/lib64 => /usr/lib ..."
+fi
