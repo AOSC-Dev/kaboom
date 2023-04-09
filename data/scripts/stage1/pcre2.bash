@@ -4,6 +4,12 @@ tar xf "$_SRCDIR"/pcre2-$PCRE2_VER.tar.gz || \
 
 cd pcre2-$PCRE2_VER
 
+abinfo "Replacing config.* ..."
+for i in $(find -name config.guess -o -name config.sub); do
+    cp -v "$_CONTRIBDIR"/automake/$(basename "$i") "$i" || \
+        aberr "Failed to copy replacement $i: $?."
+done
+
 abinfo "pcre2: Running configure ..."
 ./configure \
     --prefix=/usr \

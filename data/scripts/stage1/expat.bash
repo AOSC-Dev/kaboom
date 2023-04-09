@@ -4,6 +4,12 @@ tar xf "$_SRCDIR"/expat-$EXPAT_VER.tar.xz || \
 
 cd expat-$EXPAT_VER
 
+abinfo "Replacing config.* ..."
+for i in $(find -name config.guess -o -name config.sub); do
+    cp -v "$_CONTRIBDIR"/automake/$(basename "$i") "$i" || \
+        aberr "Failed to copy replacement $i: $?."
+done
+
 abinfo "expat: Running configure ..."
 ./configure \
     --prefix=/usr \

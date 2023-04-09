@@ -4,6 +4,12 @@ tar xf "$_SRCDIR"/util-linux-$UTIL_LINUX_VER.tar.xz || \
 
 cd util-linux-$UTIL_LINUX_VER
 
+abinfo "Replacing config.* ..."
+for i in $(find -name config.guess -o -name config.sub); do
+    cp -v "$_CONTRIBDIR"/automake/$(basename "$i") "$i" || \
+        aberr "Failed to copy replacement $i: $?."
+done
+
 abinfo "util-linux: Running configure ..."
 ./configure \
     --build=$_TARGET \
