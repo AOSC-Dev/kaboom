@@ -18,7 +18,8 @@ abinfo "binutils: Running configure ..."
 ../configure \
     --prefix=/usr \
     --build="$_TARGET" \
-    --enable-gold \
+    --host="$_TARGET" \
+    --disable-gold \
     --enable-ld=default \
     --enable-plugins \
     --enable-shared \
