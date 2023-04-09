@@ -29,8 +29,8 @@ cd /usr/bin
 ln -sv ../lib/autobuild3/ab3.sh \
     . || \
     aberr "Failed to create symlink for /usr/bin/autobuild: $?"
-ln -sv ../lib/autobuild3/contrib/autobuild-* \
-    . || \
+cd /usr/bin
+ln -sv ../lib/autobuild3/contrib/* . || \
     aberr "Failed to create symlinks for contrib scripts: $?"
 cd /
 
