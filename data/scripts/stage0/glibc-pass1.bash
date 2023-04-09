@@ -46,6 +46,12 @@ abinfo "glibc-pass1: Finalising limits.h installation (gcc-pass1) ..."
 "$_STAGE0"/tools/libexec/gcc/$_TARGET/${GCC_VER%%+*}/install-tools/mkheaders || \
     aberr "Failed to finalise limits.h installation (gcc-pass1): $?"
 
+# FIXME: Not sure why this is needed but it does resolve our problems when
+# building stage0/m4, where MB_LEN_MAX definition was not picked up.
+abinfo "Copying fixed limits.h, include-fixed => include ..."
+cp -v "$_STAGE0"/tools/lib/gcc/$_TARGET/${GCC_VER%%+*}/include{-fixed,}/limits.h || \
+        aberr "Failed to copy fixed limits.h: $?"
+
 if [[ "$KABOOM_ARCH" = "ppc64el" ]]; then
     abinfo "Resetting default flags ..."
     export CFLAGS="${_CFLAGS}"
