@@ -5,33 +5,33 @@ tar xf "$_SRCDIR"/openssl-$OPENSSL_VER.tar.gz || \
 cd openssl-$OPENSSL_VER
 
 if [ "$KABOOM_ARCH" = "amd64" ]; then
-    ARCH_OPTS="linux-x86_64"
+    KABOOM_ARCH_OPTS="linux-x86_64"
 elif [ "$KABOOM_ARCH" = "arm64" ]; then
-    ARCH_OPTS="linux-aarch64"
+    KABOOM_ARCH_OPTS="linux-aarch64"
 elif [ "$KABOOM_ARCH" = "armv4" ]; then
-    ARCH_OPTS="linux-armv4"
+    KABOOM_ARCH_OPTS="linux-armv4"
 elif [ "$KABOOM_ARCH" = "armv6hf" ]; then
-    ARCH_OPTS="linux-armv4"
+    KABOOM_ARCH_OPTS="linux-armv4"
 elif [ "$KABOOM_ARCH" = "armv7hf" ]; then
-    ARCH_OPTS="linux-armv4"
+    KABOOM_ARCH_OPTS="linux-armv4"
 elif [ "$KABOOM_ARCH" = "i486" ]; then
-    ARCH_OPTS="linux-x86"
+    KABOOM_ARCH_OPTS="linux-x86"
 elif [ "$KABOOM_ARCH" = "loongarch64" ]; then
-    ARCH_OPTS="linux64-loongarch64"
+    KABOOM_ARCH_OPTS="linux64-loongarch64"
 elif [ "$KABOOM_ARCH" = "loongson2f" ]; then
-    ARCH_OPTS="linux64-mips64"
+    KABOOM_ARCH_OPTS="linux64-mips64"
 elif [ "$KABOOM_ARCH" = "loongson3" ]; then
-    ARCH_OPTS="linux64-mips64"
+    KABOOM_ARCH_OPTS="linux64-mips64"
 elif [ "$KABOOM_ARCH" = "mips64r6el" ]; then
-    ARCH_OPTS="linux-generic64"
+    KABOOM_ARCH_OPTS="linux-generic64"
 elif [ "$KABOOM_ARCH" = "powerpc" ]; then
-    ARCH_OPTS="linux-ppc"
+    KABOOM_ARCH_OPTS="linux-ppc"
 elif [ "$KABOOM_ARCH" = "ppc64" ]; then
-    ARCH_OPTS="linux-ppc64"
+    KABOOM_ARCH_OPTS="linux-ppc64"
 elif [ "$KABOOM_ARCH" = "ppc64el" ]; then
-    ARCH_OPTS="linux-ppc64le"
+    KABOOM_ARCH_OPTS="linux-ppc64le"
 elif [ "$KABOOM_ARCH" = "riscv64" ]; then
-    ARCH_OPTS="linux64-riscv64"
+    KABOOM_ARCH_OPTS="linux64-riscv64"
 fi
 
 abinfo "openssl: Running Configure ..."
