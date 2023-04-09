@@ -2,6 +2,12 @@ abinfo "glibc: Unpacking ..."
 tar xf "$_SRCDIR"/glibc-$GLIBC_VER.tar.xz || \
     aberr "Failed to unpack sources for glibc: $?"
 
+abinfo "Replacing config.* ..."
+for i in $(find -name config.guess -o -name config.sub); do
+    cp -v "$_CONTRIBDIR"/automake/$(basename "$i") "$i" || \
+        aberr "Failed to copy replacement $i: $?."
+done
+
 abinfo "glibc: Preparing the build environment ..."
 mkdir -pv glibc-$GLIBC_VER/build || \
     aberr "Failed to create build directory for glibc: $?"

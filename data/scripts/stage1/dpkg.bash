@@ -4,6 +4,12 @@ tar xf "$_SRCDIR"/dpkg_$DPKG_VER.tar.xz || \
 
 cd dpkg-$DPKG_VER
 
+abinfo "Replacing config.* ..."
+for i in $(find -name config.guess -o -name config.sub); do
+    cp -v "$_CONTRIBDIR"/automake/$(basename "$i") "$i" || \
+        aberr "Failed to copy replacement $i: $?."
+done
+
 abinfo "dpkg: Applying architecture name hack patches ..."
 if [ -e "$_CONTRIBDIR"/dpkg-patches/*.patch.$KABOOM_ARCH ]; then
     for archpatch in "$_CONTRIBDIR"/dpkg-patches/*.patch.$KABOOM_ARCH; do

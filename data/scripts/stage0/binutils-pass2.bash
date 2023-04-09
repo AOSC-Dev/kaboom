@@ -3,6 +3,12 @@ tar xf "$_SRCDIR"/binutils-$BINUTILS_VER.tar.xz || \
     aberr "Failed to unpack sources for binutils-pass2: $?"
 cd binutils-$BINUTILS_VER
 
+abinfo "Replacing config.* ..."
+for i in $(find -name config.guess -o -name config.sub); do
+    cp -v "$_CONTRIBDIR"/automake/$(basename "$i") "$i" || \
+        aberr "Failed to copy replacement $i: $?."
+done
+
 abinfo "binutils: Tweaking the shipped ltmain.sh to prevent linkage to host libraries ..."
 # From Linux From Scratch:
 #

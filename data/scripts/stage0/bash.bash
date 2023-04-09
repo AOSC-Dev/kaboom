@@ -4,6 +4,12 @@ tar xf "$_SRCDIR"/bash-$BASH_VER.tar.gz || \
 
 cd bash-$BASH_VER
 
+abinfo "Replacing config.* ..."
+for i in $(find -name config.guess -o -name config.sub); do
+    cp -v "$_CONTRIBDIR"/automake/$(basename "$i") "$i" || \
+        aberr "Failed to copy replacement $i: $?."
+done
+
 abinfo "bash: Running configure ..."
 ./configure \
     --prefix=/usr \

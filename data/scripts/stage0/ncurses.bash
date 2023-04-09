@@ -4,6 +4,12 @@ tar xf "$_SRCDIR"/ncurses-$NCURSES_VER.tar.gz || \
 
 cd ncurses-$NCURSES_VER
 
+abinfo "Replacing config.* ..."
+for i in $(find -name config.guess -o -name config.sub); do
+    cp -v "$_CONTRIBDIR"/automake/$(basename "$i") "$i" || \
+        aberr "Failed to copy replacement $i: $?."
+done
+
 abinfo "ncurses: Running configure ..."
 ./configure \
     --prefix=/usr \

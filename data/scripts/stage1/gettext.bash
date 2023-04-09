@@ -13,6 +13,12 @@ if [[ "$KABOOM_ARCH" = "ppc64el" ]]; then
         aberr "Failed to tweak libc-config.h: $?"
 fi
 
+abinfo "Replacing config.* ..."
+for i in $(find -name config.guess -o -name config.sub); do
+    cp -v "$_CONTRIBDIR"/automake/$(basename "$i") "$i" || \
+        aberr "Failed to copy replacement $i: $?."
+done
+
 abinfo "gettext: Running configure ..."
 ./configure \
     --prefix=/usr \
