@@ -39,11 +39,6 @@ if [ -d "$_STAGE0"/lib64 ]; then
         "$_STAGE0"/usr/lib/ || \
         aberr "Failed to move files from /lib64 => /usr/lib: $?"
 fi
-if [ -d "$_STAGE0"/usr/lib64 ]; then
-    mv -v "$_STAGE0"/usr/lib64/* \
-        "$_STAGE0"/usr/lib/ || \
-        aberr "Failed to move files from /usr/lib64 => /usr/lib: $?"
-fi
 
 abinfo "Removing extraneous directories ..."
 # These will be replaced with symlinks.
@@ -92,7 +87,6 @@ case $KABOOM_ARCH in
 		ln -sv ../lib "$_STAGE0"/usr/lib/32;;
 	(*64*|loongson3)
 		ln -sv usr/lib "$_STAGE0"/lib64
-		ln -sv lib "$_STAGE0"/usr/lib64
 		ln -sv ../lib "$_STAGE0"/usr/lib/64;;
 	(*)
 		;;
