@@ -37,5 +37,5 @@ rm -r "$_STAGE0"/build || \
     aberr "Failed to remove stage0 build root: $?"
 
 abinfo "Removing libtool archives (.la) ..."
-rm -v "$_STAGE0"/usr/lib**/*.la || \
+rm -fv "$_STAGE0"/usr/lib**/*.la || \
     aberr "Failed to remove libtool archives (.la) ..."
