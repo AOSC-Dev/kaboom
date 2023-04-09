@@ -44,4 +44,9 @@ sed -e '/RTLDLIST=/s@/usr@@g' \
 
 abinfo "glibc-pass1: Finalising limits.h installation (gcc-pass1) ..."
 "$_STAGE0"/tools/libexec/gcc/$_TARGET/${GCC_VER%%+*}/install-tools/mkheaders || \
-    aberr "Failed to finalise limits.h installation (gcc-pass1) ..."
+    aberr "Failed to finalise limits.h installation (gcc-pass1): $?"
+
+if [[ "$KABOOM_ARCH" = "ppc64el" ]]; then
+    abinfo "Resetting default flags ..."
+    export CFLAGS="${_CFLAGS}"
+fi
