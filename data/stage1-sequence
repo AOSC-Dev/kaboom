@@ -8,6 +8,7 @@ stage1/python-3
 stage1/util-linux
 stage1/glibc
 stage1/texinfo
+stage1/flex
 stage1/binutils
 stage1/gcc
 stage1/pkg-config

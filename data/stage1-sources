@@ -9,6 +9,7 @@ https://github.com/nss-dev/nss/raw/$CA_CERTS_VER/lib/ckfw/builtins/certdata.txt
 https://curl.se/download/curl-$CURL_VER.tar.xz
 http://ftp.debian.org/debian/pool/main/d/dpkg/dpkg_$DPKG_VER.tar.xz
 https://github.com/libexpat/libexpat/releases/download/R_${EXPAT_VER//./_}/expat-$EXPAT_VER.tar.xz
+https://github.com/westes/flex/releases/download/v$FLEX_VER/flex-$FLEX_VER.tar.gz
 https://repo.aosc.io/aosc-repacks/gcc-$GCC_VER.tar.xz
 https://ftp.gnu.org/gnu/gettext/gettext-$GETTEXT_VER.tar.xz
 https://github.com/git/git/archive/refs/tags/v$GIT_VER.tar.gz
