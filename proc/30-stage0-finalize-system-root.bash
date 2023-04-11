@@ -100,100 +100,15 @@ ln -sv /proc/self/mounts \
     "$_STAGE0"/etc/mtab || \
     aberr "Failed to create /etc/mtab: $?"
 
-# Obtain group/passwd templates from the following link:
-#
-# https://repo.aosc.io/aosc-repacks/etc-bootstrap.tar.xz
-abinfo "Creating /etc/passwd ..."
-cat > "$_STAGE0"/etc/passwd << "EOF"
-root:x:0:0:root:/root:/bin/bash
-bin:x:1:1:bin:/dev/null:/bin/false
-nobody:x:99:99:Unprivileged User:/dev/null:/bin/false
-dbus:x:18:18:D-Bus Message Daemon User:/var/run/dbus:/bin/false
-systemd-journal-gateway:x:994:994:systemd Journal Gateway:/:/sbin/nologin
-systemd-bus-proxy:x:993:993:systemd Bus Proxy:/:/sbin/nologin
-systemd-network:x:992:992:systemd Network Management:/:/sbin/nologin
-systemd-resolve:x:991:991:systemd Resolver:/:/sbin/nologin
-systemd-timesync:x:990:990:systemd Time Synchronization:/:/sbin/nologin
-systemd-journal-remote:x:989:989:systemd Journal Remote:/:/sbin/nologin
-systemd-journal-upload:x:988:988:systemd Journal Upload:/:/sbin/nologin
-ldap:x:439:439:LDAP daemon owner:/var/lib/openldap:/bin/bash
-http:x:207:207:HTTP daemon:/srv/http:/bin/true
-uuidd:x:209:209:UUIDD user:/dev/null:/bin/true
-locate:x:191:191:Locate daemon owner:/var/lib/mlocate:/bin/bash
-polkitd:x:27:27:PolicyKit Daemon Owner:/etc/polkit-1:/bin/false
-rtkit:x:133:133:RealtimeKit User:/proc:/sbin/nologin
-named:x:40:40:BIND DNS Server:/var/named:/sbin/nologin
-tss:x:159:159:Account used by the trousers package to sandbox the tcsd daemon:/dev/null:/sbin/nologin
-unbound:x:986:986:unbound:/etc/unbound:/bin/false
-systemd-coredump:x:985:985:systemd Core Dumper:/:/sbin/nologin
-_apt:x:984:984::/var/lib/apt:/sbin/nologin
-EOF
+abinfo "Copying /etc/group ..."
+cp -v "$_CONTRIBDIR"/etc-bootstrap/group \
+    "$_STAGE0"/etc/group || \
+    abinfo "Failed to copy /etc/group: $?"
 
-abinfo "Creating /etc/group ..."
-cat > "$_STAGE0"/etc/group << "EOF"
-root:x:0:
-bin:x:1:
-sys:x:2:
-kmem:x:3:
-tape:x:4:
-tty:x:5:
-daemon:x:6:
-floppy:x:7:
-disk:x:8:
-lp:x:9:
-dialout:x:10:
-audio:x:11:
-video:x:12:
-utmp:x:13:
-usb:x:14:
-cdrom:x:15:
-mail:x:34:
-nogroup:x:99:
-systemd-journal:x:23:
-netdev:x:86:
-pulse-access:x:59:
-plugdev:x:999:
-scanner:x:70:
-network:x:135:
-dbus:x:18:
-adm:x:998:
-wheel:x:997:
-lock:x:996:
-input:x:995:
-systemd-journal-gateway:x:994:
-systemd-bus-proxy:x:993:
-systemd-network:x:992:
-systemd-resolve:x:991:
-systemd-timesync:x:990:
-systemd-journal-remote:x:989:
-systemd-journal-upload:x:988:
-ldap:x:439:
-mem:x:200:
-ftp:x:201:
-uucp:x:202:
-log:x:203:
-rfkill:x:204:
-smmsp:x:205:
-proc:x:206:
-http:x:207:
-games:x:208:
-uuidd:x:209:
-storage:x:210:
-power:x:211:
-locate:x:191:
-polkitd:x:27:
-rtkit:x:133:
-named:x:40:
-tss:x:159:
-unbound:x:986:
-systemd-coredump:x:985:
-kvm:x:987:
-users:x:1000:
-render:x:983:
-systemd-nogroup:x:65534:
-_apt:x:984:
-nobody:x:982:
-EOF
+abinfo "Copying /etc/passwd ..."
+cp -v "$_CONTRIBDIR"/etc-bootstrap/passwd \
+    "$_STAGE0"/etc/passwd || \
+    abinfo "Failed to copy /etc/passwd: $?"
 
 abinfo "Creating basic login log files ..."
 touch /var/log/{btmp,lastlog,faillog,wtmp} || \
