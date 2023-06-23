@@ -106,6 +106,12 @@ case $KABOOM_ARCH in
                  --with-tune=gs464e \
                  --with-mips-fix-loongson3-llsc"
         ;;
+    mips32r6el)
+        AUTOTOOLS_AFTER=" \
+                 ${AUTOTOOLS_AFTER} \
+                 --with-arch=mips32r6 \
+                 --with-tune=mips32r6"
+        ;;
     mips64r6el)
         AUTOTOOLS_AFTER=" \
                  ${AUTOTOOLS_AFTER} \
