@@ -1,0 +1,12 @@
+diff -Naur dpkg/data/cputable dpkg.mips32r6el/data/cputable
+--- dpkg/data/cputable	2023-06-20 06:47:41.003607410 -0700
++++ dpkg.mips32r6el/data/cputable	2023-06-20 06:48:51.734662593 -0700
+@@ -32,7 +32,7 @@
+ mips		mips		mips(eb)?		32	big
+ mipsel		mipsel		mipsel			32	little
+ mipsr6		mipsisa32r6	mipsisa32r6		32	big
+-mipsr6el	mipsisa32r6el	mipsisa32r6el		32	little
++mips32r6el	mipsisa32r6el	mipsisa32r6el		32	little
+ mips64		mips64		mips64			64	big
+ mips64el	mips64el	mips64el		64	little
+ mips64r6	mipsisa64r6	mipsisa64r6		64	big
