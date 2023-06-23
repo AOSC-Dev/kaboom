@@ -41,6 +41,10 @@ case $KABOOM_ARCH in
         _TARGET="mips64el-aosc-linux-gnuabi64"
         _FLAGS="-O2 -mabi=64 -march=gs464 -mtune=gs464e -mfix-loongson3-llsc -mxgot"
         ;;
+    mips32r6el)
+        _TARGET="mipsisa32r6el-aosc-linux-gnu"
+        _FLAGS="-O2 -march=mips32r6 -mtune=mips32r6 -mcompact-branches=always"
+        ;;
     mips64r6el)
         _TARGET="mipsisa64r6el-aosc-linux-gnuabi64"
         _FLAGS="-O2 -march=mips64r6 -mtune=mips64r6 -mcompact-branches=always"
