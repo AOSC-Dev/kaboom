@@ -8,6 +8,7 @@ i486
 loongarch64
 loongson2f
 loongson3
+mips32r6el
 mips64r6el
 m68k
 powerpc
