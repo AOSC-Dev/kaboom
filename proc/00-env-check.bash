@@ -8,13 +8,15 @@ Performing environment check ...
 ====
 "
 
+export CXXFLAGS="-mexplicit-relocs"
+
 # Reset LC_ALL to POSIX to ensure output consistency.
 export LC_ALL=C
 
 abinfo "Testing for basic programs ..."
 for prog in \
     awk bash bison cat diff find g++ gcc gawk grep gzip ld m4 make \
-    makeinfo patch perl sed tar tic yacc xz; do
+    makeinfo patch perl python3 sed tar tic yacc xz; do
     abinfo "Testing if $prog exists ..."
     command -v $prog > /dev/null || \
         aberr "$prog not found."
