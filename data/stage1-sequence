@@ -26,5 +26,6 @@ stage1/m4
 stage1/autoconf
 stage1/automake
 stage1/bzip2
-stage1/autobuild3
+stage1/cmake
+stage1/autobuild4
 stage1/acbs
