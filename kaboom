@@ -1,6 +1,20 @@
 #!/bin/bash
 # A script to generate a AOSC OS stage0 system.
 
+# Help message.
+_help_message() {
+    printf "\
+Kaboom: Bootstrap AOSC OS stage0 system from scratch.
+
+Usage:
+
+	kaboom [ARCH]
+
+	- [ARCH]: Architecture to bootstrap AOSC OS for.
+
+"
+}
+
 # Define environmental definitions.
 export _TOPDIR="$PWD"
 export _CONFDIR="$_TOPDIR"/etc
@@ -13,16 +27,15 @@ abwarn() { echo -e "[\e[33mWARN\e[0m]: \e[1m$*\e[0m"; }
 aberr()  { echo -e "[\e[31mERROR\e[0m]: \e[1m$*\e[0m"; exit 1; }
 abinfo() { echo -e "[\e[96mINFO\e[0m]: \e[1m$*\e[0m"; }
 
-# Load configuration.
-for conf in "$_CONFDIR"/*.conf; do
-    abinfo "Loading configuration: $conf ..."
-    source $conf
-done
-
 # Test if essential variables are set.
-if [ -z "${KABOOM_ARCH}" ]; then
-    aberr '$KABOOM_ARCH is not set, please check your settings in etc/kaboom.conf!'
+if [ -z "${1}" ]; then
+    echo -e '[!!!] Please specify an architecture to bootstrap AOSC OS for!'
+    _help_message
+    exit 1
 fi
+
+# Pass $1 to $KABOOM_ARCH, used by other scripts.
+export KABOOM_ARCH="${1}"
 
 # Check if KABOOM_ARCH is valid.
 if ! grep -qFx "$KABOOM_ARCH" data/supported-arch; then
