@@ -1,10 +1,10 @@
 #!/bin/bash
-# A script to generate a AOSC OS stage0 system.
+# A script to generate a AOSC OS stage1 (pre-package manager) system.
 
 # Help message.
 _help_message() {
     printf "\
-Kaboom: Bootstrap AOSC OS stage0 system from scratch.
+Kaboom: Bootstrap AOSC OS stage1 (pre-package manager) system from scratch.
 
 Usage:
 
