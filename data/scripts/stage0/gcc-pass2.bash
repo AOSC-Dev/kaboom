@@ -50,11 +50,12 @@ AUTOTOOLS_AFTER="--build=$_TARGET \
                  --enable-default-ssp \
                  --disable-nls \
                  --disable-multilib \
-                 --disable-libatomic \
+                 --enable-libatomic \
                  --disable-libgomp \
                  --disable-libquadmath \
                  --disable-libssp \
                  --disable-libvtv \
+                 --disable-libunwind-exceptions \
                  --enable-libstdcxx \
                  --enable-bootstrap \
                  --enable-languages=c,c++ \
