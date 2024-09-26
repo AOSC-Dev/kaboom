@@ -56,6 +56,7 @@ AUTOTOOLS_AFTER="--target=$_TARGET \
                  --disable-libssp \
                  --disable-libvtv \
                  --disable-libstdcxx \
+                 --disable-libunwind-exceptions \
                  --enable-languages=c,c++"
 
 case $KABOOM_ARCH in
