@@ -166,6 +166,6 @@ make install || \
     aberr "Failed to install gcc: $?"
 
 abinfo "gcc: Creating a symlink for the LTO plugin ..."
-ln -sfv ../../libexec/gcc/$(gcc -dumpmachine)/12.2.0/liblto_plugin.so \
+ln -sfv ../../libexec/gcc/$(gcc -dumpmachine)/$GCC_VER/liblto_plugin.so \
     /usr/lib/bfd-plugins/ || \
     aberr "Failed to create a symlink for the LTO plugin: $?"
