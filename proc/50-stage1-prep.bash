@@ -58,6 +58,6 @@ cat "$_LIBDIR"/env.bash \
     aberr "Failed to generate environment file (lib/env.bash): $?"
 echo -e "
 # Extra PATHs.
-export PATH=\"\$HOME/.local/bin:/usr/bin/core_perl:\$PATH\"" \
+export PATH=\"\$HOME/.local/bin:/usr/bin/core_perl:/tools/bin:/usr/bin"" \
     >> "$_STAGE1"/.kaboomrc || \
     aberr "Failed to generate environment file (PATH variable): $?"
