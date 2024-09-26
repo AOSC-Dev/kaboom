@@ -78,16 +78,16 @@ The stage1 distribution contains the following:
 
 - Minimal toolchain.
 - DPKG package manager.
-- Autobuild3 and ACBS.
+- Autobuild4 and ACBS.
 
 Next steps for AOSC OS stage2:
 
-- Setup your maintainer information (MTER= in /etc/autobuild/ab3cfg.sh).
+- Setup your maintainer information (MTER= in /etc/autobuild/ab4cfg.sh).
 - Build the AOSC OS Core.
 - Build a BuildKit recipe (see aoscbootstrap/recipes/buildkit.lst for a list
   of packages to build).
 
-These will all be done using Autobuild3's stage2 mode (ABSTAGE2=1, Kaboom has
+These will all be done using Autobuild4's stage2 mode (ABSTAGE2=1, Kaboom has
 already enabled it for you).
 
 AOSC OS stage3 will involve a full system rebuild using Ciel with ABSTAGE2=0.
