@@ -23,8 +23,9 @@ https://ftp.gnu.org/gnu/m4/m4-$M4_VER.tar.xz
 https://ftp.gnu.org/gnu/mpc/mpc-$MPC_VER.tar.gz
 https://ftp.gnu.org/gnu/mpfr/mpfr-$MPFR_VER.tar.xz
 https://ftp.gnu.org/gnu/nano/nano-$NANO_VER.tar.xz
+https://github.com/nlohmann/json/archive/refs/tags/v$NLOHMANN_JSON_VER.tar.gz
 https://www.openssl.org/source/openssl-$OPENSSL_VER.tar.gz
-https://github.com/PCRE2Project/pcre2/releases/download/pcre2-$PCRE2_VER/pcre2-$PCRE2_VER.tar.bz2
+https://github.com/PCRE2Project/pcre2/releases/download/pcre2-$PCRE2_VER/pcre2-$PCRE2_VER.tar.gz
 https://www.cpan.org/src/${PERL_VER%%.*}.0/perl-$PERL_VER.tar.xz
 https://pkg-config.freedesktop.org/releases/pkg-config-$PKG_CONFIG_VER.tar.gz
 https://www.python.org/ftp/python/$PYTHON3_VER/Python-$PYTHON3_VER.tar.xz

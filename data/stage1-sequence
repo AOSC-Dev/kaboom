@@ -27,5 +27,6 @@ stage1/autoconf
 stage1/automake
 stage1/bzip2
 stage1/cmake
+stage1/nlohmann-json
 stage1/autobuild4
 stage1/acbs
