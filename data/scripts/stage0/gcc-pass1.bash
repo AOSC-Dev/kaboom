@@ -1,3 +1,11 @@
+# When bootstrapping GCC >= 13 with GCC < 13 with pre-defined flags, we got
+# the following error:
+#
+# configure: error: *** A compiler with support for C++11 language features is required.
+abinfo "gcc-pass1: Unsetting flags to make builds pass ..."
+export CFLAGS="-O2 -D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64"
+export CXXFLAGS="-O2 -D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64"
+
 abinfo "gcc-pass1: Preparing sources ..."
 for i in \
     gcc-$GCC_VER.tar.xz \
