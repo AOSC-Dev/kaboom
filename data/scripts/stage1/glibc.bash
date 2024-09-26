@@ -1,3 +1,7 @@
+# FIXME: 64-bit file offset and time_t breaks build on 32-bit architectures.
+# Unset to work around this issue.
+export CFLAGS="${CFLAGS} -U_FILE_OFFSET_BITS -U_TIME_BITS"
+
 abinfo "glibc: Unpacking ..."
 tar xf "$_SRCDIR"/glibc-$GLIBC_VER.tar.xz || \
     aberr "Failed to unpack sources for glibc: $?"
