@@ -13,16 +13,18 @@ done
 abinfo "util-linux: Running configure ..."
 ./configure \
     --build=$_TARGET \
-    --libdir=/usr/lib    \
-    --disable-chfn-chsh  \
-    --disable-login      \
-    --disable-nologin    \
-    --disable-su         \
-    --disable-setpriv    \
-    --disable-runuser    \
+    --libdir=/usr/lib \
+    --disable-chfn-chsh \
+    --disable-login \
+    --disable-nologin \
+    --disable-su \
+    --disable-setpriv \
+    --disable-runuser \
     --disable-pylibmount \
-    --disable-static     \
-    --without-python || \
+    --disable-static \
+    --without-python \
+    --disable-liblastlog2 \
+    --disable-pam-lastlog2 || \
     aberr "Failed to run configure for util-linux: $?"
 
 abinfo "util-linux: Building ..."
