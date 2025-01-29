@@ -32,4 +32,4 @@ https://www.python.org/ftp/python/$PYTHON3_VER/Python-$PYTHON3_VER.tar.xz
 https://ftp.gnu.org/gnu/texinfo/texinfo-$TEXINFO_VER.tar.xz
 https://www.kernel.org/pub/linux/utils/util-linux/v${UTIL_LINUX_VER%.*}/util-linux-$UTIL_LINUX_VER.tar.xz
 https://ftp.gnu.org/gnu/wget/wget-$WGET_VER.tar.gz
-https://github.com/madler/zlib/archive/refs/tags/v$ZLIB_VER.tar.gz
+https://github.com/zlib-ng/zlib-ng/archive/refs/tags/$ZLIB_VER.tar.gz

@@ -1,18 +1,13 @@
 abinfo "zlib: Unpacking ..."
-tar xf "$_SRCDIR"/v$ZLIB_VER.tar.gz || \
+tar xf "$_SRCDIR"/$ZLIB_VER.tar.gz || \
     aberr "Failed to unpack zlib: $?"
 
-cd zlib-$ZLIB_VER
-
-abinfo "Replacing config.* ..."
-for i in $(find -name config.guess -o -name config.sub); do
-    cp -v "$_CONTRIBDIR"/automake/$(basename "$i") "$i" || \
-        aberr "Failed to copy replacement $i: $?."
-done
+cd zlib-ng-$ZLIB_VER
 
 abinfo "zlib: Running configure ..."
 ./configure \
-    --prefix=/usr || \
+    --prefix=/usr \
+    --zlib-compat || \
     aberr "Failed to run configure for zlib: $?"
 
 abinfo "zlib: Building ..."
