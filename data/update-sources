@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Record current directory.
+_KABOOM_SRCLIST_DIR="$PWD"
+
+for i in 0 1; do
+    cd $(mktemp -d)
+    cat "${_KABOOM_SRCLIST_DIR}"/stage${i}-versions \
+        "${_KABOOM_SRCLIST_DIR}"/stage${i}-sources | \
+        sed -e 's|^|export |g' -e 's|^export https|wget https|g ' > .script
+    bash .script
+    sha256sum * | \
+        sort -k2 > "${_KABOOM_SRCLIST_DIR}"/stage${i}-checksums
+done
