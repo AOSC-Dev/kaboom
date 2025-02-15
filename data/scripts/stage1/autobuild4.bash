@@ -21,7 +21,7 @@ echo '/usr/lib/autobuild4' \
     aberr "Failed to set prefix for autobuild4: $?"
 
 abinfo "autobuild4: Creating fake symlinks for apt and more ..."
-for fake in apt apt-get apt-cache python2; do
+for fake in apt apt-get apt-cache go gem meson ninja python2 ruby; do
     ln -sv true \
         /usr/bin/$fake || \
         aberr "Failed to create fake symlinks for $fake: $?"
