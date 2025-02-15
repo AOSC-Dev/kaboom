@@ -9,6 +9,7 @@ https://hg.mozilla.org/mozilla-central/raw-file/$CA_CERTS_VER/security/nss/lib/c
 https://cmake.org/files/v${CMAKE_VER:0:4}/cmake-$CMAKE_VER.tar.gz
 https://curl.se/download/curl-$CURL_VER.tar.xz
 http://ftp.debian.org/debian/pool/main/d/dpkg/dpkg_$DPKG_VER.tar.xz
+https://sourceware.org/elfutils/ftp/$ELFUTILS_VER/elfutils-$ELFUTILS_VER.tar.bz2
 https://github.com/libexpat/libexpat/releases/download/R_${EXPAT_VER//./_}/expat-$EXPAT_VER.tar.xz
 https://ftp.gnu.org/gnu/gcc/gcc-$GCC_VER/gcc-$GCC_VER.tar.xz
 https://ftp.gnu.org/gnu/gettext/gettext-$GETTEXT_VER.tar.xz
@@ -33,3 +34,4 @@ https://ftp.gnu.org/gnu/texinfo/texinfo-$TEXINFO_VER.tar.xz
 https://www.kernel.org/pub/linux/utils/util-linux/v${UTIL_LINUX_VER%.*}/util-linux-$UTIL_LINUX_VER.tar.xz
 https://ftp.gnu.org/gnu/wget/wget-$WGET_VER.tar.gz
 https://github.com/zlib-ng/zlib-ng/archive/refs/tags/$ZLIB_VER.tar.gz
+https://github.com/facebook/zstd/releases/download/v$ZSTD_VER/zstd-$ZSTD_VER.tar.gz

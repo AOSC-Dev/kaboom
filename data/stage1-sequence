@@ -16,6 +16,7 @@ stage1/wget
 stage1/libarchive
 stage1/libmd
 stage1/less
+stage1/zstd
 stage1/dpkg
 stage1/curl
 stage1/nano
@@ -28,5 +29,6 @@ stage1/automake
 stage1/bzip2
 stage1/cmake
 stage1/nlohmann-json
+stage1/elfutils
 stage1/autobuild4
 stage1/acbs
