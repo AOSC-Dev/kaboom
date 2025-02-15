@@ -4,6 +4,12 @@ tar xf "$_SRCDIR"/Python-$PYTHON3_VER.tar.xz || \
 
 cd Python-$PYTHON3_VER
 
+# FIXME: 64-bit time_t causes `pip install' to segfault.
+export _CFLAGS="${CFLAGS}"
+export CFLAGS="${CFLAGS} -U_FILE_OFFSET_BITS -U_TIME_BITS"
+export _CPPFLAGS="${CPPFLAGS}"
+unset CPPFLAGS
+
 abinfo "Replacing config.* ..."
 for i in $(find -name config.guess -o -name config.sub); do
     cp -v "$_CONTRIBDIR"/automake/$(basename "$i") "$i" || \
@@ -25,3 +31,7 @@ make || \
 abinfo "python-3: Installing ..."
 make install || \
     aberr "Failed to install python-3: $?"
+
+export CFLAGS="${_CFLAGS}"
+export CPPFLAGS="${_CPPFLAGS}"
+unset _CFLAGS _CPPFLAGS
