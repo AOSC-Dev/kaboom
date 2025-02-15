@@ -14,7 +14,8 @@ abinfo "curl: Running configure ..."
 ./configure \
     --prefix=/usr \
     --build=$_TARGET \
-    --with-openssl || \
+    --with-openssl \
+    --without-libpsl || \
     aberr "Failed to run configure for curl: $?"
 
 abinfo "curl: Building ..."
