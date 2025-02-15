@@ -11,7 +11,7 @@ for i in $(find -name config.guess -o -name config.sub); do
 done
 
 abinfo "dpkg: Applying architecture name hack patches ..."
-if [ -e "$_CONTRIBDIR"/dpkg-patches/*.patch.$KABOOM_ARCH ]; then
+if [ -e "$_CONTRIBDIR"/dpkg-patches/*.patch."$KABOOM_ARCH" ]; then
     for archpatch in "$_CONTRIBDIR"/dpkg-patches/*.patch.$KABOOM_ARCH; do
         abinfo "Applying $archpatch ..."
         patch -Np1 -i $archpatch || \
