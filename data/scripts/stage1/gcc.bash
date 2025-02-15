@@ -28,15 +28,24 @@ mkdir -pv build || \
     aberr "Failed to create build directory for gcc: $?"
 cd build
 
+# FIXME: Use stage1 binutils (ar) to workaround linkage failure - may be
+# related to cross-time_t builds.
+#
+# /usr/i486-kaboom-linux-gnu/bin/ar \
+#     --plugin /build/stage1/gcc/gcc-14.2.0/build/./gcc/liblto_plugin.so \
+#     x "/build/stage1/gcc/gcc-14.2.0/build/i486-kaboom-linux-gnu/libstdc++-v3/src/experimental/../../src/c++23/.libs/libc++23convenience.a"
+#
+# libc++23convenience.a is not a valid archive
 abinfo "gcc: Running configure ..."
 AUTOTOOLS_AFTER="--build=$_TARGET \
                  --prefix=/usr \
-                 --with-glibc-version=$GLIBC_VER \
                  --enable-default-pie \
                  --enable-default-ssp \
                  --disable-multilib \
                  --enable-languages=c,c++ \
-                 --with-system-zlib"
+                 --with-system-zlib \
+                 --disable-bootstrap \
+                 AR_FOR_TARGET=/usr/bin/ar"
 
 case $KABOOM_ARCH in
     alpha)
