@@ -4,8 +4,12 @@ tar xf "$_SRCDIR"/v$AUTOBUILD4_VER.tar.gz || \
 
 cd autobuild4-$AUTOBUILD4_VER
 
+abinfo "autobuild4: Preparing for shadow build ..."
+mkdir -pv build
+cd build
+
 abinfo "autobuild4: Configuring CMake sources ..."
-cmake . \
+cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DSYSCONF_INSTALL_DIR=/etc
 
@@ -14,6 +18,9 @@ make
 
 abinfo "autobuild4: Installing ..."
 make install
+
+abinfo "Exiting shadow build directory ..."
+cd ..
 
 abinfo "autobuild4: Setting prefix in configuration ..."
 echo '/usr/lib/autobuild4' \
