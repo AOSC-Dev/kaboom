@@ -1,6 +1,9 @@
 # FIXME: 64-bit file offset and time_t breaks build on 32-bit architectures.
 # Unset to work around this issue.
+export _CFLAGS="${CFLAGS}"
 export CFLAGS="${CFLAGS} -U_FILE_OFFSET_BITS -U_TIME_BITS"
+export _CPPFLAGS="${CPPFLAGS}"
+unset CPPFLAGS
 
 abinfo "glibc: Unpacking ..."
 tar xf "$_SRCDIR"/glibc-$GLIBC_VER.tar.xz || \
@@ -17,13 +20,27 @@ mkdir -pv glibc-$GLIBC_VER/build || \
     aberr "Failed to create build directory for glibc: $?"
 cd glibc-$GLIBC_VER/build
 
+# FIXME:
+#
+# ../include/time.h:21:1: error: 'asm' declaration ignored due to conflict with previous rename [-Werror=pragmas]
+#    21 | libc_hidden_proto (mktime)
+#       | ^~~~~~~~~~~~~~~~~
+# ../include/time.h:22:1: error: 'asm' declaration ignored due to conflict with previous rename [-Werror=pragmas]
+#    22 | libc_hidden_proto (timelocal)
+#       | ^~~~~~~~~~~~~~~~~
+# ../include/time.h:23:1: error: 'asm' declaration ignored due to conflict with previous rename [-Werror=pragmas]
+#    23 | libc_hidden_proto (localtime)
+#       | ^~~~~~~~~~~~~~~~~
+export _CPPFLAGS="${CPPFLAGS}"
+unset CPPFLAGS
+
 abinfo "glibc: Running configure ..."
 # Note: Set minimum kernel version to lowest branch used by mainline
 # architectures.
 ../configure \
     --prefix=/usr \
     --build=$_TARGET \
-    --enable-kernel=5.4 \
+    --enable-kernel=4.19.0 \
     --with-headers=/usr/include \
     libc_cv_slibdir=/usr/lib || \
     aberr "Failed to run configure for glibc: $?"
@@ -65,3 +82,7 @@ sed -e '/RTLDLIST=/s@/usr@@g' \
 abinfo "glibc: Generating and installing locale data ..."
 make localedata/install-locales || \
     aberr "Failed to generate and install locale data: $?"
+
+export CFLAGS="${_CFLAGS}"
+export CPPFLAGS="${_CPPFLAGS}"
+unset _CFLAGS _CPPFLAGS

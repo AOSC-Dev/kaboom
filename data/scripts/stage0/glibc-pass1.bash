@@ -1,6 +1,9 @@
 # FIXME: 64-bit file offset and time_t breaks build on 32-bit architectures.
 # Unset to work around this issue.
+export _CFLAGS="${CFLAGS}"
 export CFLAGS="${CFLAGS} -U_FILE_OFFSET_BITS -U_TIME_BITS"
+export _CPPFLAGS="${CPPFLAGS}"
+unset CPPFLAGS
 
 abinfo "glibc-pass1: Unpacking ..."
 tar xf "$_SRCDIR"/glibc-$GLIBC_VER.tar.xz || \
@@ -23,8 +26,8 @@ abinfo "glibc-pass1: Running configure ..."
 ../configure \
     --prefix=/usr \
     --host=$_TARGET \
-    --build=$_TARGET \
-    --enable-kernel=5.4 \
+    --build=$(../config.guess) \
+    --enable-kernel=4.19.0 \
     --with-headers=$_STAGE0/usr/include \
     libc_cv_slibdir=/usr/lib || \
     aberr "Failed to run configure for glibc-pass1: $?"
@@ -47,10 +50,14 @@ sed -e '/RTLDLIST=/s@/usr@@g' \
     aberr "Failed to adjust ldd: $?"
 
 abinfo "glibc-pass1: Finalising limits.h installation (gcc-pass1) ..."
-"$_STAGE0"/tools/libexec/gcc/$_TARGET/13.2.0/install-tools/mkheaders || \
+"$_STAGE0"/tools/libexec/gcc/$_TARGET/$GCC_VER/install-tools/mkheaders || \
     aberr "Failed to finalise limits.h installation (gcc-pass1): $?"
 
 abinfo "glibc-pass1: Installing finalised limits.h (gcc-pass1) ..."
 cp -v `dirname $($_TARGET-gcc -print-libgcc-file-name)`/include-fixed/* \
     `dirname $($_TARGET-gcc -print-libgcc-file-name)`/include/ || \
     aberr "Failed to install finalised limits.h (gcc-pass1): $?"
+
+export CFLAGS="${_CFLAGS}"
+export CPPFLAGS="${_CPPFLAGS}"
+unset _CFLAGS _CPPFLAGS
