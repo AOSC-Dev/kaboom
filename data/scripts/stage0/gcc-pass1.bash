@@ -44,6 +44,7 @@ AUTOTOOLS_AFTER="--target=$_TARGET \
                  --with-newlib \
                  --without-headers \
                  --with-zstd=no \
+                 --without-isl \
                  --enable-default-pie \
                  --enable-default-ssp \
                  --disable-nls \
@@ -55,6 +56,7 @@ AUTOTOOLS_AFTER="--target=$_TARGET \
                  --disable-libquadmath \
                  --disable-libssp \
                  --disable-libvtv \
+                 --disable-libsanitizer \
                  --disable-libstdcxx \
                  --disable-libunwind-exceptions \
                  --enable-languages=c,c++"
