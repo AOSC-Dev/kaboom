@@ -14,7 +14,7 @@ abinfo "bash: Running configure ..."
 ./configure \
     --prefix=/usr \
     --host=$_TARGET \
-    --build=$_TARGET \
+    --build=$(config.guess) \
     --without-bash-malloc || \
     aberr "Failed to run configure for bash: $?"
 

@@ -19,7 +19,7 @@ abinfo "coreutils: Running configure ..."
 ./configure \
     --prefix=/usr \
     --host=$_TARGET \
-    --build=$_TARGET \
+    --build=$(config.guess) \
     --enable-install-program=hostname \
     --enable-no-install-program=kill,uptime \
     --cache-file=config.cache || \

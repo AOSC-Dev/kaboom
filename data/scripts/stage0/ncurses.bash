@@ -14,7 +14,7 @@ abinfo "ncurses: Running configure ..."
 ./configure \
     --prefix=/usr \
     --host=$_TARGET \
-    --build=$_TARGET \
+    --build=$(config.guess) \
     --with-shared \
     --without-normal \
     --with-cxx-shared \

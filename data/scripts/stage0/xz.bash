@@ -14,7 +14,7 @@ abinfo "xz: Running configure ..."
 ./configure \
     --prefix=/usr \
     --host=$_TARGET \
-    --build=$_TARGET \
+    --build=$(config.guess) \
     --enable-shared || \
     aberr "Failed to run configure for xz: $?"
 

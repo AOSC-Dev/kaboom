@@ -14,7 +14,7 @@ abinfo "diffutils: Running configure ..."
 ./configure \
     --prefix=/usr \
     --host=$_TARGET \
-    --build=$_TARGET || \
+    --build=$(config.guess) || \
     aberr "Failed to run configure for diffutils: $?"
 
 abinfo "diffutils: Building ..."

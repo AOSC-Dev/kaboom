@@ -39,13 +39,13 @@ mkdir -pv build || \
 cd build
 
 abinfo "gcc-pass2: Running configure ..."
-AUTOTOOLS_AFTER="--build=$_TARGET \
+AUTOTOOLS_AFTER="--build=$(../config.guess) \
                  --host=$_TARGET \
                  --target=$_TARGET \
                  --prefix=/usr \
                  --with-build-sysroot=$_STAGE0 \
-                 --with-glibc-version=$GLIBC_VER \
                  --with-zstd=no \
+                 --without-isl \
                  --enable-default-pie \
                  --enable-default-ssp \
                  --disable-nls \
@@ -53,11 +53,9 @@ AUTOTOOLS_AFTER="--build=$_TARGET \
                  --enable-libatomic \
                  --disable-libgomp \
                  --disable-libquadmath \
+                 --disable-libsanitizer \
                  --disable-libssp \
                  --disable-libvtv \
-                 --disable-libunwind-exceptions \
-                 --enable-libstdcxx \
-                 --enable-bootstrap \
                  --enable-languages=c,c++ \
                  LDFLAGS_FOR_TARGET=-L$PWD/$_TARGET/libgcc"
 

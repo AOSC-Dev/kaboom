@@ -14,7 +14,7 @@ abinfo "make: Running configure ..."
 ./configure \
     --prefix=/usr \
     --host=$_TARGET \
-    --build=$_TARGET \
+    --build=$(config.guess) \
     --without-guile || \
     aberr "Failed to run configure for make: $?"
 

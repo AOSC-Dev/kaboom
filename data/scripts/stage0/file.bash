@@ -33,7 +33,7 @@ abinfo "file: Running configure ..."
 ./configure \
     --prefix=/usr \
     --host=$_TARGET \
-    --build=$_TARGET || \
+    --build=$(config.guess) || \
     aberr "Failed to run configure for file: $?"
 
 abinfo "file: Building ..."

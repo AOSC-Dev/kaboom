@@ -14,7 +14,7 @@ abinfo "m4: Running configure ..."
 ./configure \
     --prefix=/usr \
     --host=$_TARGET \
-    --build=$_TARGET || \
+    --build=$(config.guess) || \
     aberr "Failed to run configure for m4: $?"
 
 abinfo "m4: Building ..."
