@@ -76,7 +76,7 @@ export CFLAGS="${_FLAGS}"
 export CXXFLAGS="${_FLAGS}"
 
 # Define MAKEFLAGS.
-export MAKEFLAGS="-j$(( $(nproc) + 1))"
+export MAKEFLAGS="-j$(( $(nproc) + 1)) V=1 VERBOSE=1"
 
 # Executable paths.
 export PATH="$_STAGE0/tools/bin:$PATH"
