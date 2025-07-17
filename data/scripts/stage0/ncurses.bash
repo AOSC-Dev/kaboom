@@ -20,6 +20,7 @@ abinfo "ncurses: Running configure ..."
     --with-cxx-shared \
     --without-debug \
     --without-ada \
+    --disable-stripping \
     --enable-widec || \
     aberr "Failed to run configure for ncurses: $?"
 
