@@ -48,7 +48,9 @@ if [ "$ARCH" != "$KABOOM_ARCH" ] ; then
 	# We are cross compiling the stage 0.
 	CROSS_STAGE0=1
 	abinfo "Cross compiling from $_HOST to $_TARGET"
-	if [ ! -e /proc/sys/fs/binfmt_misc/"$_BINFMT" ] ; then
+	if systemd-detect-virt -qc ; then
+		abwarn "Make sure the host system has $_BINFMT registered in binfmt_misc registry."
+	elif [ ! -e /proc/sys/fs/binfmt_misc/"$_BINFMT" ] ; then
 		aberr "Binfmt entry $_BINFMT does not exist in /proc/sys/fs/binfmt_misc."
 		abdie "Make sure the corresponding qemu-user-static package is installed."
 	fi
