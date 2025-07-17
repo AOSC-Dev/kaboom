@@ -19,6 +19,9 @@ abinfo "Creating stage0 build root ..."
 mkdir -pv "$_STAGE0"/build || \
     aberr "Failed to create stage0 build root: $?"
 
+export CFLAGS="$CFLAGS $_HOST_FLAGS"
+export CXXFLAGS="$CXXFLAGS $_HOST_FLAGS"
+
 # Read build sequence.
 for comp in `cat "$_DATADIR"/stage0-sequence`; do
     abinfo "$comp: Creating build directory ..."
