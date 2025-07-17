@@ -46,5 +46,20 @@ rm -r "$_STAGE0"/build || \
     aberr "Failed to remove stage0 build root: $?"
 
 abinfo "Removing libtool archives (.la) ..."
-rm -v "$_STAGE0"/usr/lib**/*.la || \
+rm -v "$_STAGE0"/usr/lib/*.la || \
     aberr "Failed to remove libtool archives (.la) ..."
+if [ ! -L "$_STAGE0"/usr/lib64 ] && [ -d "$_STAGE0"/usr/lib64 ] ; then
+	rm -v "$_STAGE0"/usr/lib64/*.la || \
+	    aberr "Failed to remove unwanted libtool archives (.la) from libstdc++: $?"
+fi
+if [ ! -L "$_STAGE0"/usr/lib32 ] && [ -d "$_STAGE0"/usr/lib32 ] ; then
+	rm -v "$_STAGE0"/usr/lib32/*.la || \
+	    aberr "Failed to remove unwanted libtool archives (.la) from libstdc++: $?"
+fi
+
+# Remove the workaround
+if [ "$_LINK_LIB64" = "1" ] ; then
+	abinfo "Workaround: Removing the /usr/lib64 -> lib symlink ..."
+	unlink "$_STAGE0"/usr/lib64
+fi
+
