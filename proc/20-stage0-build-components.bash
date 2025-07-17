@@ -22,6 +22,12 @@ mkdir -pv "$_STAGE0"/build || \
 export CFLAGS="$CFLAGS $_HOST_FLAGS"
 export CXXFLAGS="$CXXFLAGS $_HOST_FLAGS"
 
+if [ "$_LINK_LIB64" = "1" ] ; then
+	abinfo "Workaround: Creating symlink /usr/lib64 -> lib ..."
+	mkdir -pv "$_STAGE0"/usr/lib
+	ln -sv lib "$_STAGE0"/usr/lib64
+fi
+
 # Read build sequence.
 for comp in `cat "$_DATADIR"/stage0-sequence`; do
     abinfo "$comp: Creating build directory ..."
