@@ -49,11 +49,13 @@ case $KABOOM_ARCH in
         _TARGET="mips64el-kaboom-linux-gnuabi64"
         _TGT_FLAGS="-O2 -mabi=64 -march=mips3 -mtune=loongson2f -mloongson-mmi -Wa,-mfix-loongson2f-nop"
 	_BINFMT=qemu-mips64el
+	_LINK_LIB64=1
         ;;
     loongson3)
         _TARGET="mips64el-kaboom-linux-gnuabi64"
         _TGT_FLAGS="-O2 -mabi=64 -march=gs464 -mtune=gs464e -mfix-loongson3-llsc -mxgot"
 	_BINFMT=qemu-mips64el
+	_LINK_LIB64=1
         ;;
     mips32r6el)
         _TARGET="mipsisa32r6el-kaboom-linux-gnu"
@@ -65,6 +67,7 @@ case $KABOOM_ARCH in
         _TARGET="mipsisa64r6el-kaboom-linux-gnuabi64"
         _TGT_FLAGS="-O2 -march=mips64r6 -mtune=mips64r6 -mcompact-branches=always -mmsa"
 	_BINFMT=qemu-mips64el
+	_LINK_LIB64=1
         ;;
     m68k)
         _TARGET="m68k-kaboom-linux-gnu"
