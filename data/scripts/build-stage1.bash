@@ -15,6 +15,10 @@ abinfo "Sourcing /.kaboomrc ..."
 source /.kaboomrc || \
     aberr "Failed to source /.kaboomrc: ?"
 
+export CFLAGS="$_TARGET_FLAGS"
+export CXXFLAGS="$_TGT_FLAGS"
+export CPPFLAGS="$_TGT_CPPFLAGS"
+
 echo "
 ====
 Building stage1 components
