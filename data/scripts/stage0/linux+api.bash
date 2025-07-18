@@ -4,7 +4,7 @@ tar xf "$_SRCDIR"/linux-$LINUX_API_VER.tar.xz || \
 cd linux-$LINUX_API_VER
 
 abinfo "linux+api: Building Linux API headers ..."
-make headers || \
+make ARCH="$_KERNEL_ARCH" CROSS_COMPILE="$_TGT_TRIPLE"- headers || \
     aberr "Faild to build Linux API headers: $?"
 
 abinfo "linux+api: Drop unwanted files ..."
