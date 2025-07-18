@@ -15,9 +15,12 @@ abinfo "Sourcing /.kaboomrc ..."
 source /.kaboomrc || \
     aberr "Failed to source /.kaboomrc: ?"
 
-export CFLAGS="$_TARGET_FLAGS"
-export CXXFLAGS="$_TGT_FLAGS"
-export CPPFLAGS="$_TGT_CPPFLAGS"
+abinfo "Prepairing the environment ..."
+export CFLAGS="$CFLAGS $_TGT_FLAGS"
+export CXXFLAGS="$CXXFLAGS $_TGT_FLAGS"
+export CPPFLAGS="$CPPFLAGS $_TGT_CPPFLAGS"
+
+abinfo "Let the build commence!"
 
 echo "
 ====
