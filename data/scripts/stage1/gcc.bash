@@ -51,6 +51,7 @@ case $KABOOM_ARCH in
     alpha)
         AUTOTOOLS_AFTER=" \
                  ${AUTOTOOLS_AFTER} \
+                 --disable-default-ssp \
                  --with-cpu=ev4"
         ;;
     arm64)
