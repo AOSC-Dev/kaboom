@@ -18,6 +18,7 @@ case $KABOOM_ARCH in
         _TGT_FLAGS="-O2 -march=armv8-a -mtune=cortex-a53"
 	_BINFMT=qemu-aarch64
 	_KERNEL_ARCH=arm64
+	_LINK_LIB64=1
         ;;
     armv4)
         _TARGET="arm-kaboom-linux-gnueabi"
