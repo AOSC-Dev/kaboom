@@ -63,8 +63,10 @@ AUTOTOOLS_AFTER="--target=$_TARGET \
 
 case $KABOOM_ARCH in
     alpha)
+	# -fstack-protector is not supported on alpha.
         AUTOTOOLS_AFTER=" \
                  ${AUTOTOOLS_AFTER} \
+		 --disable-default-ssp \
                  --with-cpu=ev4"
         ;;
     arm64)
