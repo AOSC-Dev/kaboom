@@ -42,12 +42,13 @@ fi
 rm -f dummy.c dummy
 
 _ARCH=$(dpkg --print-architecture)
-_HOST="$(dirname $(gcc --print-prog-name=cc1))"
-_HOST="$(basename $(realpath $_HOST/..))"
+_HOST_TRIPLE="$(dirname $(gcc --print-prog-name=cc1))"
+_HOST_TRIPLE="$(basename $(realpath $_HOST_TRIPLE/..))"
+export _HOST_TRIPLE
 if [ "$_ARCH" != "$KABOOM_ARCH" ] ; then
 	# We are cross compiling the stage 0.
 	CROSS_STAGE0=1
-	abinfo "Cross compiling from $_HOST to $_TARGET"
+	abinfo "Cross compiling from $_HOST_TRIPLE to $_TARGET"
 	if systemd-detect-virt -qc ; then
 		abwarn "Make sure the host system has $_BINFMT registered in binfmt_misc registry."
 	elif [ "${_BINFMT_SKIP/$_ARCH/}" != "${_BINFMT_SKIP}" ] ; then

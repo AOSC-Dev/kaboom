@@ -26,7 +26,7 @@ abinfo "glibc-pass1: Running configure ..."
 ../configure \
     --prefix=/usr \
     --host=$_TARGET \
-    --build=$(../config.guess) \
+    --build=$_HOST_TRIPLE \
     --enable-kernel=4.19.0 \
     --with-headers=$_STAGE0/usr/include \
     libc_cv_slibdir=/usr/lib || \
