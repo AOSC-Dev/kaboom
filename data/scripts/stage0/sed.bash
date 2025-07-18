@@ -18,7 +18,7 @@ abinfo "sed: Running configure ..."
 ./configure \
     --prefix=/usr \
     --host=$_TARGET \
-    --build=$(config.guess) \
+    --build=$_HOST_TRIPLE \
     --cache-file=config.cache || \
     aberr "Failed to run configure for sed: $?"
 

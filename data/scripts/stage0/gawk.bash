@@ -14,7 +14,7 @@ abinfo "gawk: Running configure ..."
 ./configure \
     --prefix=/usr \
     --host=$_TARGET \
-    --build=$(config.guess) || \
+    --build=$_HOST_TRIPLE || \
     aberr "Failed to run configure for gawk: $?"
 
 abinfo "gawk: Building ..."

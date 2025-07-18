@@ -39,7 +39,7 @@ mkdir -pv build || \
 cd build
 
 abinfo "gcc-pass2: Running configure ..."
-AUTOTOOLS_AFTER="--build=$(../config.guess) \
+AUTOTOOLS_AFTER="--build=$_HOST_TRIPLE \
                  --host=$_TARGET \
                  --target=$_TARGET \
                  --prefix=/usr \

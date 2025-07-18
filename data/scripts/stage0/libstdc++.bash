@@ -15,7 +15,7 @@ cd gcc-$GCC_VER/build
 
 abinfo "libstdc++: Running configure ..."
 AUTOTOOLS_AFTER="--host=$_TARGET \
-                 --build=$(../config.guess) \
+                 --build=$_HOST_TRIPLE \
                  --prefix=/usr \
                  --disable-multilib \
                  --disable-nls \

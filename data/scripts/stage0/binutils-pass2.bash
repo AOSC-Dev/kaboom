@@ -26,7 +26,7 @@ cd build
 abinfo "binutils-pass2: Running configure ..."
 ../configure \
     --prefix=/usr \
-    --build=$(../config.guess) \
+    --build=$_HOST_TRIPLE \
     --host=$_TARGET \
     --disable-nls \
     --enable-shared \
