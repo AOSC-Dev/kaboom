@@ -39,6 +39,7 @@ case $KABOOM_ARCH in
         _TGT_CPPFLAGS="-D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64"
         _TGT_FLAGS="-O2 -fno-tree-ch -march=armv7-a -mtune=cortex-a7 -mfloat-abi=hard -mfpu=neon -mthumb"
 	_BINFMT=qemu-arm
+	_BINFMT_SKIP="arm64"
 	_KERNEL_ARCH=arm
         ;;
     i486)
@@ -46,6 +47,7 @@ case $KABOOM_ARCH in
         _TGT_CPPFLAGS="-D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64"
         _TGT_FLAGS="-O2 -fno-tree-ch -march=i486 -mtune=generic -ffunction-sections -fdata-sections"
 	_BINFMT=qemu-i386
+	_BINFMT_SKIP="amd64"
 	_KERNEL_ARCH=x86
         ;;
     loongarch64)
