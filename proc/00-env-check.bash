@@ -51,7 +51,12 @@ if [ "$_ARCH" != "$KABOOM_ARCH" ] ; then
 	if systemd-detect-virt -qc ; then
 		abwarn "Make sure the host system has $_BINFMT registered in binfmt_misc registry."
 	elif [ "${_BINFMT_SKIP/$_ARCH/}" != "${_BINFMT_SKIP}" ] ; then
-		abinfo "Target binaries can run natively. No binfmt support is required."
+		if [ "$_ARCH" = "arm64" ] ; then
+			abwarn "Be aware that not all AArch64 processors are capable of running AArch32 binaries natively."
+			abwarn "Please check if your machine supports 32-bit EL0 and EL1 before continuing."
+		else
+			abinfo "Target binaries can run natively. No binfmt support is required."
+		fi
 	elif [ ! -e /proc/sys/fs/binfmt_misc/"$_BINFMT" ] ; then
 		aberr "Binfmt entry $_BINFMT does not exist in /proc/sys/fs/binfmt_misc."
 		abdie "Make sure the corresponding qemu-user-static package is installed."
