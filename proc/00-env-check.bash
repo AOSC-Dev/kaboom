@@ -41,10 +41,10 @@ if [ ! -x dummy ]; then
 fi
 rm -f dummy.c dummy
 
-ARCH=$(dpkg --print-architecture)
+_ARCH=$(dpkg --print-architecture)
 _HOST="$(dirname $(gcc --print-prog-name=cc1))"
 _HOST="$(basename $(realpath $_HOST/..))"
-if [ "$ARCH" != "$KABOOM_ARCH" ] ; then
+if [ "$_ARCH" != "$KABOOM_ARCH" ] ; then
 	# We are cross compiling the stage 0.
 	CROSS_STAGE0=1
 	abinfo "Cross compiling from $_HOST to $_TARGET"
