@@ -5,7 +5,7 @@ tar xf "$_SRCDIR"/$ACBS_VER.tar.gz || \
 cd acbs-$ACBS_VER/
 
 # Adapted from acbs/bootstrap.
-abinfo "acbs: Installing required dependencies to local user folder ...'
+abinfo "acbs: Installing required dependencies to local user folder ..."
 rm -f get-pip.py
 wget https://bootstrap.pypa.io/get-pip.py || \
     aberr "Failed to download get-pip.py: $?"
@@ -14,7 +14,7 @@ python3 get-pip.py --user || \
 pip3 install --user pyparsing || \
     aberr "Failed to install pyparsing: $?"
 
-abinfo 'acbs: Installing ..."
+abinfo "acbs: Installing ..."
 python3 setup.py install --user || \
     aberr "Failed to install acbs: $?"
 
